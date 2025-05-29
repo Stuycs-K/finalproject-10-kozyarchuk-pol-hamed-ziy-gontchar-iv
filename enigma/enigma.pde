@@ -20,7 +20,6 @@ void setup(){
   // println(rotor1.toString());
   // println(rotor2.toString());
   // println(rotor3.toString());
-
 }
 
 ArrayList<Character> stringToArray(String s) {
