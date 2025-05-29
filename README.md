@@ -20,11 +20,15 @@ Working Visualizers:
   - https://people.physik.hu-berlin.de/~palloks/js/enigma/enigma-u_v262_en.html
   - https://www.101computing.net/enigma-machine-emulator/
   - https://cryptii.com/pipes/enigma-machine
+  - (Wrong output for at least one input) https://observablehq.com/@tmcw/enigma-machine
 
 Information:
   - https://www.cryptomuseum.com/crypto/enigma/working.htm
   - https://www.ciphermachinesandcryptology.com/en/enigmatech.htm
+  - https://en.wikipedia.org/wiki/Enigma_rotor_details
 
-Other Sources:
-  - https://observablehq.com/@tmcw/enigma-machine
+Videos:
+  - https://www.youtube.com/watch?v=ybkkiGtJmkM&pp=ygUOZW5pZ21hIG1hY2hpbmU%3D
+  - https://www.youtube.com/watch?v=G2_Q9FoD-oQ&pp=ygUOZW5pZ21hIG1hY2hpbmU%3D
+  
  
