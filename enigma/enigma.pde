@@ -1,4 +1,4 @@
-//cursor for input
+//cursor location for input
 int xpos, ypos;
 
 void setup(){
