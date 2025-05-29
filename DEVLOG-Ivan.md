@@ -13,4 +13,5 @@ Work from 5/15 - 5/23
 
 Work from 5/28
 - Spent more time running through cases, and realized the most fatal error was probably the rotor wheels on the sites being weirdly configured, but once I realized how I should have put it, I genuinely understood how it works and what we must start doing to have it work. Starting to see code plan in my mind
-- Updated the readme with pretty much as much info as we could have
+- Updated the readme with pretty much as much info as we could have up to this point
+- Added base processing file for enigma machine work to be done
