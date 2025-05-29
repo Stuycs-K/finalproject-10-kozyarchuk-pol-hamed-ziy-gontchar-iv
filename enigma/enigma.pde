@@ -18,10 +18,8 @@ void keyPressed(){
   xpos+=textWidth(key);
 }
 
-String encrypt(){
-  String rotor1 = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-  String rotor2 = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
-  String rotor3 = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+
+String encryptChar(char x, int rot1, int rot2, int rot3, int set1, int set2, int set3){
 
   return null;
 }
