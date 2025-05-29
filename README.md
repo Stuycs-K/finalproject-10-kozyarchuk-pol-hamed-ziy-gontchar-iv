@@ -16,14 +16,15 @@ How does the user interact with this program? (CHANGE THIS!!!!!)
 
 ### Resources/ References:
 
-Working Visualizers:
-  - https://people.physik.hu-berlin.de/~palloks/js/enigma/enigma-u_v262_en.html
-  - https://www.101computing.net/enigma-machine-emulator/
-  - https://cryptii.com/pipes/enigma-machine
+  Working Visualizers:
+    - https://people.physik.hu-berlin.de/~palloks/js/enigma/enigma-u_v262_en.html
+    - https://www.101computing.net/enigma-machine-emulator/
+    - https://cryptii.com/pipes/enigma-machine
 
-Information:
-  - https://www.cryptomuseum.com/crypto/enigma/working.htm
-  - https://www.ciphermachinesandcryptology.com/en/enigmatech.htm
+  Information:
+    - https://www.cryptomuseum.com/crypto/enigma/working.htm
+    - https://www.ciphermachinesandcryptology.com/en/enigmatech.htm
 
-Other Sources:
-  - https://observablehq.com/@tmcw/enigma-machine
+  Other Sources:
+    - https://observablehq.com/@tmcw/enigma-machine
+ 
