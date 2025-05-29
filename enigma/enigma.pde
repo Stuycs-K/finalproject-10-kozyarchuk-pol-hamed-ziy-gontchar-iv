@@ -26,8 +26,12 @@ String encrypt(){
   return null;
 }
 
-ArrayList<char> rotate(){
-
+ArrayList<Character> rotate(ArrayList<Character> rotorStatus, int rots){
+  for(int i = 0; i < rots; i++){
+    Character temp = rotorStatus.remove(0);
+    rotorStatus.add(temp);
+  }
+  return rotorStatus;
 }
 
 char rotor1(){
