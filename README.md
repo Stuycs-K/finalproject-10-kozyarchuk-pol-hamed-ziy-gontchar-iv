@@ -7,6 +7,8 @@ Ivan Gontchar, Ziyad Hamed, Polina Kozyarchuk
        
 ### Project Description:
 
+Enigma machine emulator.
+=======
 Our project will feature a functioning encoding and decoding mechanism for the (in)famous Enigma Machine, that was used by Nazi Germany as a method of encryption during World War 2. Users will be able to customize the machine's settings (rotors, rotor positions, rotor settings, plugboard, possibly reflectors) to their liking. Users will then be able to encrypt or decrypt messages that they choose to type in as a prompt. Our program will feature a loosely guided walkthrough in a Processing window to show the progression of the encoding for the message, to eventually arrive at the final product, such that users understand what happened.
   
 ### Instructions:
