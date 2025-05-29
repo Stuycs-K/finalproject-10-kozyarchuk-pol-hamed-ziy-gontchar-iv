@@ -14,6 +14,8 @@ void draw(){
 }
 
 void keyPressed(){
+  
+  //print user input
   text(key, xpos, ypos);
   xpos+=textWidth(key);
 }
