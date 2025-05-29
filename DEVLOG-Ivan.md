@@ -15,3 +15,14 @@ Work from 5/28
 - Spent more time running through cases, and realized the most fatal error was probably the rotor wheels on the sites being weirdly configured, but once I realized how I should have put it, I genuinely understood how it works and what we must start doing to have it work. Starting to see code plan in my mind
 - Updated the readme with pretty much as much info as we could have up to this point
 - Added base processing file for enigma machine work to be done
+
+Work from 5/29
+- In class:
+  - Caught up teammates on enigma functionality
+  - Planned out file code structure and layout for running the file (although this is kinda a work in progress)
+  - Started coding the encoding, a lot of skeleton functions with no use yet
+  - Rotating an arraylist, encoding primary functions
+- HW:
+  - Refined main branch code for errors, mostly on return types
+  - Added code to actually see how the encryption process is coming along (but not testable as of writing, will be checked later)
+  - Function for character to it's ASCII value, to an index
