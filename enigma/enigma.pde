@@ -28,7 +28,7 @@ ArrayList<Character> stringToArray(String s) {
   for (int i = 0; i < s.length(); i++) {
     output.add(s.charAt(i));
   }
-
+  return output;
 }
 
 void keyPressed(){
@@ -36,11 +36,32 @@ void keyPressed(){
   xpos+=textWidth(key);
 }
 
+char encrypt(char x, ArrayList<Character>  rot1, ArrayList<Character>  rot2, ArrayList<Character>  rot3, int set1, int set2, int set3){
+  rot1 = rotate(rot1, set1);
+  rot2 = rotate(rot2, set2);
+  rot3 = rotate(rot3, set3);
 
-String encryptChar(char x, int rot1, int rot2, int rot3, int set1, int set2, int set3){
+  char output = x;
+  int index = charToIndex(output);
 
-  return null;
+  output = rot1.get(index);
+  println("Post 1st rotor: " + output);
+
+  index = charToIndex(output);
+  output = rot2.get(index);
+  println("Post 2nd rotor: " + output);
+
+  index = charToIndex(output);
+  output = rot3.get(index);
+  println("Post 3rd rotor: " + output);
+
+  return 'a';
 }
+
+// char encryptChar(char x, int rot1, int rot2, int rot3){
+//
+//   return 'a';
+// }
 
 ArrayList<Character> rotate(ArrayList<Character> rotorStatus, int rots){
   for(int i = 0; i < rots; i++){
@@ -51,13 +72,17 @@ ArrayList<Character> rotate(ArrayList<Character> rotorStatus, int rots){
 }
 
 char rotor1(){
-
+  return 'a';
 }
 
 char rotor2(){
-
+  return 'a';
 }
 
 char rotor3(){
+  return 'a';
+}
 
+int charToIndex(char x){
+  return ((int) x) - 65;
 }
