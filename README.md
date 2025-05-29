@@ -3,11 +3,11 @@
  
 ### GROUP NAME HERE (CHANGE THIS!!!!!)
 
-Group Members Here (CHANGE THIS!!!!!)
+Ivan Gontchar, Ziyad Hamed, Polina Kozyarchuk
        
 ### Project Description:
 
-Explain what is this project. (CHANGE THIS!!!!!)
+Enigma machine emulator.
   
 ### Instructions:
 
