@@ -14,4 +14,5 @@ Watched videos and caught up on research of machine (60 min)
 ### 2025-05-29 - catch up
 discussing logistics (15 min)
 process user input (10 min)
-
+creat rotor object (30 min)
+implement rotor object in code (40 min)
