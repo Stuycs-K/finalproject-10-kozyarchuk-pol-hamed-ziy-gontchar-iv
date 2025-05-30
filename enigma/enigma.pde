@@ -1,5 +1,6 @@
 int i_xpos, i_ypos, o_xpos, o_ypos;
 Rotor r1, r2, r3;
+String reflectorB;
 
 void setup(){
   size(800,600);
@@ -14,6 +15,8 @@ void setup(){
   r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
   r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
   r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+  
+  reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
 }
 
 
@@ -35,14 +38,14 @@ void keyPressed(){
     rotorUpdate(r1,r2,r3);
     
     //print result
-    char result = encrypt(key, r1, r2, r3);
+    char result = encrypt(key, r1, r2, r3, reflectorB);
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
   }
 }
 
 //runs x through the 3 specificed rotors, returns result
-char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot){
+char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String reflector){
   char output = x;
   int index = charToIndex(output);
 
@@ -57,6 +60,10 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot){
   index = charToIndex(output);
   output = thirdrot.status_arr.get(index);
   println("Post 3rd rotor: " + output);
+
+  index = charToIndex(output);
+  output = reflector.charAt(index);
+  println("Into reflector: " + output);
 
   return output;
 }
