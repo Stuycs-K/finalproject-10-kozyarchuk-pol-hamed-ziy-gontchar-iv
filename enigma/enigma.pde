@@ -1,77 +1,90 @@
-
-//cursor location for input
-int xpos, ypos;
+int i_xpos, i_ypos, o_xpos, o_ypos;
+Rotor r1, r2, r3;
 
 void setup(){
-  size(500,500);
-
-  xpos = 0;
-  ypos = 40;
+  size(800,600);
   textSize(40);
+  fill(0);
+  
+  i_xpos = 0;
+  i_ypos = 40;
+  o_xpos = 0;
+  o_ypos = 340;
 
-  String rotor1s = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
-  String rotor2s = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
-  String rotor3s = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
-
-
-  ArrayList<Character> rotor1 = stringToArray(rotor1s);
-  ArrayList<Character> rotor2 = stringToArray(rotor2s);
-  ArrayList<Character> rotor3 = stringToArray(rotor3s);
-  // println(rotor1.toString());
-  // println(rotor2.toString());
-  // println(rotor3.toString());
+  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
+  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
+  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
 }
 
-ArrayList<Character> stringToArray(String s) {
-  ArrayList<Character> output = new ArrayList<Character>();
-  for (int i = 0; i < s.length(); i++) {
-    output.add(s.charAt(i));
-  }
-  return output;
+
+//dont delete; draw needed to run
+void draw(){
+  
 }
 
 void keyPressed(){
   
-  //print user input
-  text(key, xpos, ypos);
-  xpos+=textWidth(key);
+  //if valid
+  if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
+    //print user input(uppercase) top of screen
+    char input = (char) (key-32);
+    text(input, i_xpos, i_ypos);
+    i_xpos+=textWidth(input);
+    
+    //input changes depending on what rotors are selected
+    rotorUpdate(r1,r2,r3);
+    
+    //print result
+    char result = encrypt(key, r1, r2, r3);
+    text(result, o_xpos, o_ypos);
+    o_xpos+=textWidth(result);
+  }
 }
 
-char encrypt(char x, ArrayList<Character>  rot1, ArrayList<Character>  rot2, ArrayList<Character>  rot3, int set1, int set2, int set3){
-  rot1 = rotate(rot1, set1);
-  rot2 = rotate(rot2, set2);
-  rot3 = rotate(rot3, set3);
-
+//runs x through the 3 specificed rotors, returns result
+char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot){
   char output = x;
   int index = charToIndex(output);
 
-  output = rot1.get(index);
+  output = firstrot.status_arr.get(index);
   println("Post 1st rotor: " + output);
 
   index = charToIndex(output);
-  output = rot2.get(index);
+  output = secondrot.status_arr.get(index);
   println("Post 2nd rotor: " + output);
 
   index = charToIndex(output);
-  output = rot3.get(index);
+  output = thirdrot.status_arr.get(index);
   println("Post 3rd rotor: " + output);
 
-  return 'a';
+  return output;
 }
 
-// char encryptChar(char x, int rot1, int rot2, int rot3){
-//
-//   return 'a';
-// }
-
-ArrayList<Character> rotate(ArrayList<Character> rotorStatus, int rots){
-  for(int i = 0; i < rots; i++){
-    Character temp = rotorStatus.remove(0);
-    rotorStatus.add(temp);
+//input changes depending on what rotors are selected
+void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
+  rot1.rotate(1);
+  
+  //if one full rotation,
+  if(rot1.rotnum == 0){
+    //turn second rotor
+    rot2.rotate(1);
+    
+    if(rot2.rotnum == 0){
+      rot3.rotate(1);
+    }
   }
-  return rotorStatus;
 }
 
+
+int charToIndex(char x){
+  if((int)x >= 97){
+    return ((int) x) - 97;
+  } else {
+    return ((int) x) - 65;
+  }
+}
+
+/*prob dont need
 char rotor1(){
   return 'a';
 }
@@ -83,7 +96,4 @@ char rotor2(){
 char rotor3(){
   return 'a';
 }
-
-int charToIndex(char x){
-  return ((int) x) - 65;
-}
+*/
