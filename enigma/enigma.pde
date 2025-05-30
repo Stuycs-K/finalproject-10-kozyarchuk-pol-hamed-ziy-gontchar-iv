@@ -3,7 +3,7 @@
 int xpos, ypos;
 
 void setup(){
-  size(500,500);
+  size(800,600);
 
   xpos = 0;
   ypos = 40;
@@ -30,11 +30,16 @@ ArrayList<Character> stringToArray(String s) {
   return output;
 }
 
+//dont delete; draw needed to run
+void draw(){
+}
+
 void keyPressed(){
-  
-  //print user input
+  //print user input top of screen
   text(key, xpos, ypos);
   xpos+=textWidth(key);
+  
+  
 }
 
 char encrypt(char x, ArrayList<Character>  rot1, ArrayList<Character>  rot2, ArrayList<Character>  rot3, int set1, int set2, int set3){
