@@ -26,3 +26,7 @@ Work from 5/29
   - Refined main branch code for errors, mostly on return types
   - Added code to actually see how the encryption process is coming along (but not testable as of writing, will be checked later)
   - Function for character to it's ASCII value, to an index
+  - Polina locked in with Rotor class which cleans everything SO NICELY!
+  - Fixed rotating logic to be right-wards instead of left
+  - Added reflector to the end of what we have for the encryption process so far
+  
