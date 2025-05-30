@@ -46,6 +46,7 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot){
   char output = x;
   int index = charToIndex(output);
 
+  println("Pre 1st rotor: " + output + "   INDEX: " + index);
   output = firstrot.status_arr.get(index);
   println("Post 1st rotor: " + output);
 

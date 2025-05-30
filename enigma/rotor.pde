@@ -28,8 +28,9 @@ public class Rotor {
     
     //rotate array
     for(int i = 0; i < rot; i++){
-      Character temp = this.status_arr.remove(0);
-      this.status_arr.add(temp);
+      Character temp = this.status_arr.remove(25);
+      this.status_arr.add(0, temp);
+      println("Rotated Arr: " + this.status_arr.toString());
     }
     
     //copy rotated to string
