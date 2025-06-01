@@ -4,6 +4,10 @@ String reflectorB;
 
 void setup(){
   size(800,600);
+
+  fill(255);
+  rect(0, 0, width, height);
+
   textSize(40);
   fill(0);
 
