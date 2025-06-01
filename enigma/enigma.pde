@@ -63,14 +63,20 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
 
   println("Pre 1st rotor: " + output + "   INDEX: " + index);
   output = firstrot.status_arr.get(index);
+  index = charToIndex(output);
+  output = firstrot.setting_arr.get(index);
   println("Post 1st rotor: " + output);
 
   index = charToIndex(output);
   output = secondrot.status_arr.get(index);
+  index = charToIndex(output);
+  output = secondrot.setting_arr.get(index);
   println("Post 2nd rotor: " + output);
 
   index = charToIndex(output);
   output = thirdrot.status_arr.get(index);
+  index = charToIndex(output);
+  output = thirdrot.setting_arr.get(index);
   println("Post 3rd rotor: " + output);
 
   index = charToIndex(output);
@@ -102,6 +108,10 @@ int charToIndex(char x){
   } else {
     return ((int) x) - 65;
   }
+}
+
+char indexToChar(int x){
+  return x + 65;
 }
 
 /*prob dont need
