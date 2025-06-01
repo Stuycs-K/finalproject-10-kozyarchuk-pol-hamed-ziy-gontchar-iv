@@ -141,12 +141,12 @@ void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
 
   //if one full rotation,
   if(shift){
-    println("SECOND SHIFT!!");
+    println("SECOND ROTOR SHIFT!!");
     //turn second rotor
     shift = rot2.rotate(1, false);
 
     if(shift){
-      println("THIRD SHIFT!!");
+      println("THIRD ROTOR SHIFT!!");
       shift = rot3.rotate(1, false);
     }
   }
