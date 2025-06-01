@@ -1,6 +1,7 @@
 int i_xpos, i_ypos, o_xpos, o_ypos;
 Rotor r1, r2, r3;
 String reflectorB;
+int formater;
 
 void setup(){
   size(800,600);
@@ -15,6 +16,8 @@ void setup(){
   i_ypos = 40;
   o_xpos = 0;
   o_ypos = 340;
+
+  formater = 0;
 
   r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
   r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
@@ -35,10 +38,10 @@ void draw(){
 }
 
 void keyPressed(){
-
   //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
     //print user input(uppercase) top of screen
+    formater++;
     char input = (char) (key-32);
     fill(0);
     text(input, i_xpos, i_ypos);
@@ -51,6 +54,13 @@ void keyPressed(){
     char result = encrypt(key, r1, r2, r3, reflectorB);
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
+
+    println("Here at the end: " + formater);
+    if(formater % 5 == 0){
+      println("SPACING");
+      text(' ', o_xpos, o_ypos);
+      o_xpos+=textWidth(' ');
+    }
   }
 
   if (key == '0') {
