@@ -12,13 +12,13 @@ void setup(){
   o_xpos = 0;
   o_ypos = 340;
 
-  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
-  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
-  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
+  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
+  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
 
-  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
-  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
-  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
+  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
+  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
+  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
 
   reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
   // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
@@ -41,10 +41,10 @@ void keyPressed(){
     i_xpos+=textWidth(input);
 
     //input changes depending on what rotors are selected
-    rotorUpdate(r3,r2,r1);
+    rotorUpdate(r1,r2,r3);
 
     //print result
-    char result = encrypt(key, r3, r2, r1, reflectorB);
+    char result = encrypt(key, r1, r2, r3, reflectorB);
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
   }
