@@ -20,6 +20,30 @@ public class Rotor {
     this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 }
 
+  Rotor(String status_str, int setting){
+    this.rotnum = 0;
+    this.status_str = status_str;
+
+    this.status_arr = stringToArray(status_str);
+    // this.status_arr.rotate(setting);
+
+    this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+    this.rotate(setting);
+}
+
+  Rotor(ArrayList<Character> status_arr, int setting){
+    this.rotnum = 0;
+    this.status_str = status_arr.toString();
+
+    this.status_arr = status_arr;
+    // this.status_arr.rotate(setting);
+
+    this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+    this.rotate(setting);
+}
+
 
   //  methods  //
   void rotate(int rot){
