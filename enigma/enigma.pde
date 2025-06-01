@@ -2,6 +2,7 @@ int i_xpos, i_ypos, o_xpos, o_ypos;
 Rotor r1, r2, r3;
 String reflectorB;
 int formater;
+ArrayList<String> plugboard;
 
 void setup(){
   size(800,600);
@@ -22,6 +23,11 @@ void setup(){
   r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
   r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
   r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
+
+  plugboard = new ArrayList<String>();
+  plugboard.add("AB");
+  plugboard.add("CG");
+  plugboard.add("ZE");
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -77,6 +83,8 @@ void keyPressed(){
 
 //runs x through the 3 specificed rotors, returns result
 char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String reflector){
+  x = plugTransform(x);
+
   char output = x;
   int index = charToIndex(output);
 
@@ -132,6 +140,8 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   output = indexToChar(index);
   println("END RESULT: " + output);
 
+  output = plugTransform(output);
+
   return output;
 }
 
@@ -152,6 +162,20 @@ void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
   }
 }
 
+char plugTransform(char input){
+  input = Character.toUpperCase(input);
+
+  for(int i = 0; i < plugboard.size(); i++){
+    String curr = plugboard.get(i);
+    if(curr.charAt(0) == input){
+      return curr.charAt(1);
+    }
+    if(curr.charAt(1) == input){
+      return curr.charAt(0);
+    }
+  }
+  return input;
+}
 
 int charToIndex(char x){
   if((int)x >= 97){
