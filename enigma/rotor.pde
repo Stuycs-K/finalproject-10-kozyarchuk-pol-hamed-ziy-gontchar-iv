@@ -1,28 +1,32 @@
 public class Rotor {
   int rotnum;
   String status_str;
+  char notch;
   ArrayList<Character> status_arr;
   ArrayList<Character> setting_arr;
 
 
   //  constructors  //
-  public Rotor(String status_str){
+  public Rotor(String status_str, char notch){
     this.rotnum = 0;
+    this.notch = notch;
     this.status_str = status_str;
     this.status_arr = stringToArray(status_str);
     this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   }
 
-  Rotor(ArrayList<Character> status_arr){
+  Rotor(ArrayList<Character> status_arr, char notch){
     this.rotnum = 0;
+    this.notch = notch;
     this.status_str = status_arr.toString();
     this.status_arr = status_arr;
     this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 }
 
-  Rotor(String status_str, int setting){
+  Rotor(String status_str, int setting, char notch){
     this.rotnum = 0;
     this.status_str = status_str;
+    this.notch = notch;
 
     this.status_arr = stringToArray(status_str);
     // this.status_arr.rotate(setting);
@@ -32,9 +36,10 @@ public class Rotor {
     this.rotate(setting);
 }
 
-  Rotor(ArrayList<Character> status_arr, int setting){
+  Rotor(ArrayList<Character> status_arr, int setting, char notch){
     this.rotnum = 0;
     this.status_str = status_arr.toString();
+    this.notch = notch;
 
     this.status_arr = status_arr;
     // this.status_arr.rotate(setting);

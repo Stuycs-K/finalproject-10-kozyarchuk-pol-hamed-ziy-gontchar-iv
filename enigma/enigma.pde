@@ -16,9 +16,9 @@ void setup(){
   o_xpos = 0;
   o_ypos = 340;
 
-  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
-  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
-  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
+  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E");
+  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V");
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -54,9 +54,9 @@ void keyPressed(){
   }
 
   if (key == '0') {
-    r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
-    r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE");
-    r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+    r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
+    r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
+    r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
     i_xpos = 0;
     o_xpos = 0;
     fill(255);
