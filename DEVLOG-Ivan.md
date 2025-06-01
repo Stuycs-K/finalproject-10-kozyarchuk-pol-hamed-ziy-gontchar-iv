@@ -42,3 +42,4 @@ Work for 5/30-6/1
     - Reworked the process of the encryption function in the same way the video works
   - Added the notches as part of the rotor class, and made it functionally working for the rotate function
   - Fixed output formatting such that every five characters is a space
+  - Added the functionality of a plugboard into the main enigma file, with it's own function as well
