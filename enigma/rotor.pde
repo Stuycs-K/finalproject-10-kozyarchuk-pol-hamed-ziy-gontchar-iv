@@ -33,7 +33,7 @@ public class Rotor {
 
     this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-    this.rotate(setting);
+    this.rotate(setting, true);
 }
 
   Rotor(ArrayList<Character> status_arr, int setting, char notch){
@@ -46,16 +46,22 @@ public class Rotor {
 
     this.setting_arr = stringToArray("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-    this.rotate(setting);
+    this.rotate(setting, true);
 }
 
 
   //  methods  //
-  void rotate(int rot){
+  boolean rotate(int rot, boolean startSet){
+    boolean returner = false;
+
     //update rotnum
-    this.rotnum+=rot;
-    if(this.rotnum>25){
-      this.rotnum -= 26;
+    // this.rotnum+=rot;
+    // if(this.rotnum>25){
+    //   this.rotnum -= 26;
+    // }
+
+    if(!startSet && this.setting_arr.get(0)==this.notch){
+      returner = true;
     }
 
     //rotate array
@@ -71,6 +77,8 @@ public class Rotor {
 
     //copy rotated to string
     this.status_str = arrayToString(this.status_arr);
+
+    return returner;
   }
 }
 

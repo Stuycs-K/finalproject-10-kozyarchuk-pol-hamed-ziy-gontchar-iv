@@ -17,8 +17,8 @@ void setup(){
   o_ypos = 340;
 
   r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
-  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E");
-  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V");
+  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
+  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -127,15 +127,17 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
 
 //input changes depending on what rotors are selected
 void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
-  rot1.rotate(1);
+  boolean shift = rot1.rotate(1, false);
 
   //if one full rotation,
-  if(rot1.rotnum == 0){
+  if(shift){
+    println("SECOND SHIFT!!");
     //turn second rotor
-    rot2.rotate(1);
+    shift = rot2.rotate(1, false);
 
-    if(rot2.rotnum == 0){
-      rot3.rotate(1);
+    if(shift){
+      println("THIRD SHIFT!!");
+      shift = rot3.rotate(1, false);
     }
   }
 }
