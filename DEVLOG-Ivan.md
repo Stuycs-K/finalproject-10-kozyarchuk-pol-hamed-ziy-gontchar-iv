@@ -26,3 +26,20 @@ Work from 5/29
   - Refined main branch code for errors, mostly on return types
   - Added code to actually see how the encryption process is coming along (but not testable as of writing, will be checked later)
   - Function for character to it's ASCII value, to an index
+  - Polina locked in with Rotor class which cleans everything SO NICELY!
+  - Fixed rotating logic to be right-wards instead of left
+  - Added reflector to the end of what we have for the encryption process so far
+
+Work for 5/30-6/1
+- In class:
+  - Running through a bunch of simulations trying to understand what was going on, and how we can match that in our code
+  - Went through it as well with Mr. K to try and see, but we didn't find an answer
+  - WHY DOES THE LOGIC WORK FOR THE OTHER ROTORS BUT NOT FOR ROTOR 1!?!?!?!!
+- HW:
+  - I found this video and it explains the logic very clearly, and outlines a good path for implementing a coded solution: (https://www.youtube.com/watch?v=UKbP3Rjxhy0)
+  - OH MY GOD I GOT ENCRYPTING AND DECRYPTING TO WORK FOR ALL VALUES BY FOLLOWING THE STRUCTURE OF THE VIDEO
+    - I did this by adding another arraylist in the rotor class that tracks the settings
+    - Reworked the process of the encryption function in the same way the video works
+  - Added the notches as part of the rotor class, and made it functionally working for the rotate function
+  - Fixed output formatting such that every five characters is a space
+  - Added the functionality of a plugboard into the main enigma file, with it's own function as well

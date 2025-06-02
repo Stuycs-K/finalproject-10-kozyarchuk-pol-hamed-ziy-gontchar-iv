@@ -27,4 +27,3 @@ trying to understand ivan's code (40 min)
 
 ### 2025-06-02
 reformating where input/output goes (20 min)
-

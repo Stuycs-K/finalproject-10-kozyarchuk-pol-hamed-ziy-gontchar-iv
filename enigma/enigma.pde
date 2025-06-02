@@ -29,6 +29,8 @@ void setup(){
   plugboard.add("CG");
   plugboard.add("ZE");
 
+  r1.printChar('a', width/2, height/2, 20);
+
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
@@ -38,9 +40,7 @@ void setup(){
 }
 
 
-//dont delete; draw needed to run
 void draw(){
-
   line(0, 500, 800, 500);
   stroke(0);
   
@@ -180,7 +180,6 @@ void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
     }
   }
 }
-
 
 char plugTransform(char input){
   input = Character.toUpperCase(input);
