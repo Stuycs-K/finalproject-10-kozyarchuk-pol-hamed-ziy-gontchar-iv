@@ -2,8 +2,8 @@ public class Rotor {
   int rotnum;
   String status_str;
   char notch;
-  ArrayList<Character> status_arr;
-  ArrayList<Character> setting_arr;
+  ArrayList<Character> status_arr; // Scrambled letters
+  ArrayList<Character> setting_arr; // aplhabet rotations
 
 
   //  constructors  //
@@ -80,6 +80,21 @@ public class Rotor {
 
     return returner;
   }
+
+  void printChar(char c, int x, int y, int size) {
+    fill(255);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    text(c, x/2, y/2);
+  } // Print character to screen
+
+  void diaplay(int x) {
+    for (int i = 0; i < 26; i++) {
+
+    }
+  } // Print rotor to screen
+
 }
 
 
