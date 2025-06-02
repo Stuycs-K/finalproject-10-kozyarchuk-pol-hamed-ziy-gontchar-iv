@@ -86,12 +86,21 @@ public class Rotor {
     // noStroke();
     square(x - size/2, y - size/2, size);
     fill(0);
-    text(c, x/2, y/2);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
   } // Print character to screen
 
-  void diaplay(int x) {
+  void display(int x, int y, int size, int gap) {
     for (int i = 0; i < 26; i++) {
+      char sc = this.status_arr.get(i);
+      char ac = this.setting_arr.get(i);
 
+      int ypos = y + size/2 + i * size;
+      int xpos = x + size/2;
+
+      printChar(sc, xpos + gap + size, ypos, size);
+      printChar(ac, xpos, ypos, size);
     }
   } // Print rotor to screen
 

@@ -30,6 +30,7 @@ void setup(){
   plugboard.add("ZE");
 
   r1.printChar('a', width/2, height/2, 20);
+  r1.display(0, 0, 40, 0);
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
