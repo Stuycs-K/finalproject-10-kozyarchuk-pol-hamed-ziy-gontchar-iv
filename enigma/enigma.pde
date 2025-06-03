@@ -13,10 +13,10 @@ void setup(){
   textSize(40);
   fill(0);
 
-  i_xpos = 0;
-  i_ypos = 40;
-  o_xpos = 0;
-  o_ypos = 340;
+  i_xpos = 3;
+  i_ypos = 547;
+  o_xpos = 3;
+  o_ypos = 595;
 
   formater = 0;
 
@@ -29,8 +29,8 @@ void setup(){
   plugboard.add("CG");
   plugboard.add("ZE");
 
-  r1.printChar('a', width/2, height/2, 20);
-  r1.display(0, 0, 40, 0);
+  //r1.printChar('a', width/2, height/2, 20);
+  //r1.display(0, 0, 40, 0);
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -41,15 +41,41 @@ void setup(){
 }
 
 
-//dont delete; draw needed to run
 void draw(){
-
+  line(0, 500, 800, 500);
+  stroke(0);
+  fill(0);
+  textSize(15);
+  text("input: ", 3, 515);
+  text("output: ", 3, 560);
+  textSize(40);
 }
 
 void keyPressed(){
-  //if valid
+    //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
-    //print user input(uppercase) top of screen
+    
+    
+    //add a space every 5 chars; align; reset if not enough space
+    if(formater % 5 == 0){
+      println(o_xpos + " " + i_xpos);
+      o_xpos=30 *formater;
+      i_xpos=30 * formater;
+       
+       //clear chars
+       if(formater > 20){
+         fill(255);     
+         stroke(255);
+         rect(1, 520, 750, 27);
+         rect(1, 566, 750, 50);
+         
+         o_xpos = 3;
+         i_xpos = 3;
+         formater = 0;
+         
+       }
+    }    
+    
     formater++;
     char input = (char) (key-32);
     fill(0);
@@ -64,12 +90,7 @@ void keyPressed(){
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
 
-    println("Here at the end: " + formater);
-    if(formater % 5 == 0){
-      println("SPACING");
-      text(' ', o_xpos, o_ypos);
-      o_xpos+=textWidth(' ');
-    }
+   
   }
 
   if (key == '0') {
@@ -191,17 +212,3 @@ int charToIndex(char x){
 char indexToChar(int x){
   return ((char) (x + 65));
 }
-
-/*prob dont need
-char rotor1(){
-  return 'a';
-}
-
-char rotor2(){
-  return 'a';
-}
-
-char rotor3(){
-  return 'a';
-}
-*/
