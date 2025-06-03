@@ -115,10 +115,7 @@ public class Rotor {
       } else if (ac == target){
         printChar(sc, xpos + gap + size, ypos, size);
         printCharHighlight(ac, xpos, ypos, size);
-      } else {
-        printChar(sc, xpos + gap + size, ypos, size);
-        printChar(ac, xpos, ypos, size);
-      }
+      } 
     }
     
     popStyle();
@@ -166,6 +163,25 @@ void printChar(char c, int x, int y, int size) {
     int xpos = x + size/2;
   
     printChar(sc, xpos, ypos, size);
+  }
+  popStyle();
+}
+
+//highlights the index, and the char that appears at the index
+void displayStringHighlight(String str, int x, int y, int size, int index){
+    pushStyle();
+  
+    for (int i = 0; i < 26; i++) {
+      char sc = str.charAt(i);
+    
+      int ypos = y + size/2 + i * size;
+      int xpos = x + size/2;
+    
+      if(index == i || sc == (char)index+65){
+        printCharHighlight(sc, xpos, ypos, size);
+      } else {
+        printChar(sc, xpos, ypos, size);
+      }
   }
   popStyle();
 }

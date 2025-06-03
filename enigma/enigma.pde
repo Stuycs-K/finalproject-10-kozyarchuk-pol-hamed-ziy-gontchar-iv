@@ -103,9 +103,9 @@ void keyPressed(){
 
     //input changes depending on what rotors are selected
     rotorUpdate(r1,r2,r3);
-    //r1.displayHighlight(x_r1, 30, 18, 0, input);
-    //r2.displayHighlight(x_r2, 30, 18, 0);
-    //r3.displayHighlight(x_r3, 30, 18, 0);
+    r1.display(x_r1, 30, 18, 0);
+    r2.display(x_r2, 30, 18, 0);
+    r3.display(x_r3, 30, 18, 0);
 
     //print result
     char result = encrypt(key, r1, r2, r3, reflectorB);
@@ -134,59 +134,33 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   char output = x;
   int index = charToIndex(output);
 
-  println("Encoding: " + x);
-
-  output = firstrot.status_arr.get(index);
-  println("Found this at index of first input: " + output);
-  // index = charToIndex(output);
-  // output = firstrot.setting_arr.get(index);
-  index = firstrot.setting_arr.indexOf(output);
-  println("Found this at index of first output: " + firstrot.setting_arr.get(index));
-  firstrot.displayHighlight(x_r1, 30, 18, 0, output);
-
-  // index = charToIndex(output);
-  output = secondrot.status_arr.get(index);
-  println("Found this at index of second input: " + output);
-  // index = charToIndex(output);
-  // output = secondrot.setting_arr.get(index);
-  index = secondrot.setting_arr.indexOf(output);
-  println("Found this at index of second output: " + secondrot.setting_arr.get(index));
-  secondrot.displayHighlight(x_r2, 30, 18, 0, output);
   
-  // index = charToIndex(output);
+  output = firstrot.status_arr.get(index);
+  index = firstrot.setting_arr.indexOf(output);
+  firstrot.displayHighlight(x_r1,30,18,0,output);
+  
+   output = secondrot.status_arr.get(index);
+ 
+  index = secondrot.setting_arr.indexOf(output);
+ 
   output = thirdrot.status_arr.get(index);
-  println("Found this at index of third input: " + output);
-  // index = charToIndex(output);
-  // output = thirdrot.setting_arr.get(index);
+ 
   index = thirdrot.setting_arr.indexOf(output);
-  println("Found this at index of third output: " + thirdrot.setting_arr.get(index));
-  thirdrot.displayHighlight(x_r3, 30, 18, 0, output);
-  // index = charToIndex(output);
-  println("Third rotor setting: " + thirdrot.setting_arr.toString());
-  println("This index: " + index);
+ 
   output = reflector.charAt(index);
-  println("Into reflector: " + output);
   index = charToIndex(output);
   output = reflector.charAt(index);
-  println("Reflected: " + output);
+  
 
   output = thirdrot.setting_arr.get(index);
-  println("Found this at index of third setting: " + output);
   index = thirdrot.status_arr.indexOf(output);
-  println("Found this at index of third status: " + thirdrot.status_arr.get(index));
-
+  
   output = secondrot.setting_arr.get(index);
-  println("Found this at index of second setting: " + output);
-//  index = secondrot.status_arr.indexOf(output);
-  println("Found this at index of second status: " + secondrot.status_arr.get(index));
-
+ 
   output = firstrot.setting_arr.get(index);
-  println("Found this at index of first setting: " + output);
   index = firstrot.status_arr.indexOf(output);
-   println("Found this at index of first status: " + firstrot.status_arr.get(index));
 
   output = indexToChar(index);
-  println("END RESULT: " + output);
 
  // output = plugTransform(output);
 
