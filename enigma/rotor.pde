@@ -204,6 +204,29 @@ void displayStringHighlight(String str, int x, int y, int size, char target, cha
 
 }
 
+void displayRefAlph(int x, char target, char c) {
+    pushStyle();
+
+    target = Character.toUpperCase(target);
+    String alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    println("target: " + target);
+    for(int i = 0; i < 26; i++){
+      char cur = alph.charAt(i);
+      println("cur: " + cur);
+      int ypos = 30 + 18/2 + i*18;
+      int xpos = x-18 - 18/2;
+
+      if(cur == target){
+        if(c == 'r'){
+          printCharHighlight(cur, xpos+18, ypos, 18, 'l');
+        } else if(c == 'y'){
+          printCharHighlight(cur, xpos+18, ypos, 18, 'r');
+        }
+      }
+    }
+    popStyle();
+  }
 
 ArrayList<Character> stringToArray(String s) {
   ArrayList<Character> output = new ArrayList<Character>();
