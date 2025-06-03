@@ -29,10 +29,10 @@ void setup(){
   plugboard.add("CG");
   plugboard.add("ZE");
 
-  r1.printChar('a', width/2, height/2, 20);
-  r1.display(0, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
-  r2.display(200, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
-  r3.display(400, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
+  // r1.printChar('a', width/2, height/2, 20);
+  // r1.display(0, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
+  // r2.display(200, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
+  // r3.display(400, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -45,7 +45,11 @@ void setup(){
 
 //dont delete; draw needed to run
 void draw(){
+  background(255);
 
+  r1.display(0, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
+  r2.display(200, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
+  r3.display(400, 0, 20, 20, 'A', 'B', color(255, 0, 0), color(0, 0, 255), true);
 }
 
 void keyPressed(){
