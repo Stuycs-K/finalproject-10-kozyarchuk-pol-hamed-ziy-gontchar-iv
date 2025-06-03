@@ -68,11 +68,11 @@ public class Rotor {
     for(int i = 0; i < rot; i++){
       Character temp = this.status_arr.remove(0);
       this.status_arr.add(temp);
-      println("Rotated Arr: " + this.status_arr.toString());
+    //  println("Rotated Arr: " + this.status_arr.toString());
 
       temp = this.setting_arr.remove(0);
       this.setting_arr.add(temp);
-      println("Rotated Setting: " + this.setting_arr.toString());
+     // println("Rotated Setting: " + this.setting_arr.toString());
     }
 
     //copy rotated to string
@@ -82,6 +82,8 @@ public class Rotor {
   }
 
   void printChar(char c, int x, int y, int size) {
+    //save old settings
+    pushStyle();
     fill(255);
     // noStroke();
     square(x - size/2, y - size/2, size);
@@ -89,9 +91,14 @@ public class Rotor {
     textSize(size);
     textAlign(CENTER, CENTER);
     text(c, x, y);
+    
+    //restore old 
+    popStyle();
   } // Print character to screen
 
   void display(int x, int y, int size, int gap) {
+    pushStyle();
+    
     for (int i = 0; i < 26; i++) {
       char sc = this.status_arr.get(i);
       char ac = this.setting_arr.get(i);
@@ -102,6 +109,8 @@ public class Rotor {
       printChar(sc, xpos + gap + size, ypos, size);
       printChar(ac, xpos, ypos, size);
     }
+    
+    popStyle();
   } // Print rotor to screen
 
 }
