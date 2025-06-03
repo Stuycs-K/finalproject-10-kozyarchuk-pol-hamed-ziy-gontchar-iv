@@ -81,21 +81,6 @@ public class Rotor {
     return returner;
   }
 
-  void printChar(char c, int x, int y, int size) {
-    //save old settings
-    pushStyle();
-    fill(255);
-    // noStroke();
-    square(x - size/2, y - size/2, size);
-    fill(0);
-    textSize(size);
-    textAlign(CENTER, CENTER);
-    text(c, x, y);
-    
-    //restore old 
-    popStyle();
-  } // Print character to screen
-
   void display(int x, int y, int size, int gap) {
     pushStyle();
     
@@ -114,6 +99,8 @@ public class Rotor {
   } // Print rotor to screen
 
 }
+
+
 
 
 ArrayList<Character> stringToArray(String s) {

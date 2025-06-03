@@ -1,4 +1,4 @@
-int i_xpos, i_ypos, o_xpos, o_ypos;
+int i_xpos, i_ypos, o_xpos, o_ypos, x_r1, x_r2, x_r3, x_ref;
 Rotor r1, r2, r3;
 String reflectorB;
 int formater;
@@ -32,16 +32,26 @@ void setup(){
   //r1.printChar('a', width/2, height/2, 20);
   textSize(20);
   text("first rotor", 390, 25);
-  //r1.display(400, 30, 18, 0);
   text("second rotor", 260, 25);
   text("third rotor", 130, 25);
   text("reflector", 20, 25);
+  
+  x_r1 = 412;
+  x_r2 = 293;
+  x_r3 = 160;
+  r1.display(x_r1, 30, 18, 0);
+  r2.display(x_r2, 30, 18, 0);
+  r3.display(x_r3, 30, 18, 0);
+  
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
 
   reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
   // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
+  
+  x_ref = 45;
+  displayString(reflectorB, x_ref, 30, 18);
 }
 
 
@@ -67,6 +77,8 @@ void keyPressed(){
        
        //clear chars
        if(formater > 10){
+         pushStyle();
+         
          fill(255);     
          stroke(255);
          rect(1, 518, 800, 27);
@@ -76,6 +88,7 @@ void keyPressed(){
          i_xpos = 3;
          formater = 0;
          
+         popStyle();
        }
     }    
     
@@ -89,7 +102,9 @@ void keyPressed(){
 
     //input changes depending on what rotors are selected
     rotorUpdate(r1,r2,r3);
-    r1.display(400, 30, 18, 0);
+    r1.display(x_r1, 30, 18, 0);
+    r2.display(x_r2, 30, 18, 0);
+    r3.display(x_r3, 30, 18, 0);
 
     //print result
     char result = encrypt(key, r1, r2, r3, reflectorB);
@@ -205,6 +220,35 @@ char plugTransform(char input){
     }
   }
   return input;
+}
+
+void printChar(char c, int x, int y, int size) {
+    //save old settings
+    pushStyle();
+    fill(255);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+    
+    //restore old 
+    popStyle();
+} // Print character to screen
+  
+ void displayString(String str, int x, int y, int size){
+    pushStyle();
+  
+    for (int i = 0; i < 26; i++) {
+    char sc = str.charAt(i);
+  
+    int ypos = y + size/2 + i * size;
+    int xpos = x + size/2;
+  
+    printChar(sc, xpos, ypos, size);
+  }
+  popStyle();
 }
 
 int charToIndex(char x){
