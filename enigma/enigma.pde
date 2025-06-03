@@ -49,6 +49,24 @@ void setup(){
   }
 
 
+  String setPlugboard = "";
+  while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+    setPlugboard = prompt("Do you want to set any plugboard settings? ( Y / N )");
+  }
+  plugboard = new ArrayList<String>();
+
+  while(setPlugboard.equals("Y")){
+    String initialPlug = prompt("Enter the first letter you want the plug to go to: ");
+    initialPlug += prompt("Enter the letter do you want the plug for " + initialPlug + " to go to: ");
+    setPlugboard = "";
+    while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+      setPlugboard = prompt("Do you want to set any other plugboard settings? ( Y / N )");
+    }
+    plugboard.add(initialPlug);
+  }
+
+
+
   size(500,600);
 
   fill(255);
@@ -72,7 +90,6 @@ void setup(){
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
 
-  plugboard = new ArrayList<String>();
   plugboard.add("AB");
   plugboard.add("CG");
   plugboard.add("ZE");
@@ -195,7 +212,7 @@ void keyPressed(){
 
 //runs x through the 3 specificed rotors, returns result
 char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String reflector){
- // x = plugTransform(x);
+ x = plugTransform(x);
 
   char output = x;
   int index = charToIndex(output);
@@ -234,7 +251,7 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
 
   output = indexToChar(index);
   displayStringHighlight("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18, output, 'l');
- // output = plugTransform(output);
+ output = plugTransform(output);
 
   return output;
 }
