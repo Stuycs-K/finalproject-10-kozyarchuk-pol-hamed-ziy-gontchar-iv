@@ -192,11 +192,13 @@ void displayStringHighlight(String str, int x, int y, int size, char target, cha
           printCharHighlight(sc, xpos, ypos, size, 'l');
          if(dir == 'l'){
             line(xpos - 15, ypos, xpos-80, ypos);
+            triangle(xpos-15, ypos, xpos-20, ypos+5, xpos-20, ypos-5);
           }
       } else if(i == charToIndex(target)){
           printCharHighlight(sc, xpos, ypos, size, 'r');
           if(dir == 'r'){
             line(xpos + 15, ypos, xpos+80, ypos);
+            triangle(xpos+15, ypos, xpos+20, ypos+5, xpos+20, ypos-5);
           }
        }
       }
