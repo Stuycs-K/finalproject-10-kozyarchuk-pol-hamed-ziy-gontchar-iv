@@ -27,3 +27,7 @@ trying to understand ivan's code (40 min)
 
 ### 2025-06-02
 reformating where input/output goes (20 min)
+dealing with making next disappear properly (30 min)
+struggling to merge with ziyad's code until i found push and popStyle (30 min)
+setting up path highlighting (40 min)
+arrows..? (40 min)
