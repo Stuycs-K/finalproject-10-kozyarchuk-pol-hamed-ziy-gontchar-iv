@@ -99,7 +99,7 @@ public class Rotor {
   } // Print rotor to screen
   
   
-  void displayHighlight(int x, int y, int size, int gap, char target) {
+  void displayHighlight(int x, int y, int size, int gap, char target, char dir) {
     pushStyle();
     
     for (int i = 0; i < 26; i++) {
@@ -110,11 +110,11 @@ public class Rotor {
       int xpos = x + size/2;
       
       if(sc == target){
-        printCharHighlight(sc, xpos+gap+size, ypos, size);
+        printCharHighlight(sc, xpos+gap+size, ypos, size, dir);
         printChar(ac, xpos, ypos, size);        
       } else if (ac == target){
         printChar(sc, xpos + gap + size, ypos, size);
-        printCharHighlight(ac, xpos, ypos, size);
+        printCharHighlight(ac, xpos, ypos, size, dir);
       } 
     }
     
@@ -123,12 +123,20 @@ public class Rotor {
 
 }
 
-void printCharHighlight(char c, int x, int y, int size) {
+void printCharHighlight(char c, int x, int y, int size, char dir) {
     //save old settings
     pushStyle();
-    fill(255,255,0);
+    //if pointing left;
+    if(dir == 'l'){
+      fill(255,255,0);
+      line(x - size/2 , y - size/2+10, x - size/2 +100, y-size/2+10);
+    } else if(dir == 'r'){
+      fill(255,0,0);
+      line(x-size/2, y-size/2+10, x-size/2-100, y-size/2+10);
+    }
     // noStroke();
     square(x - size/2, y - size/2, size);
+    
     fill(0);
     textSize(size);
     textAlign(CENTER, CENTER);
@@ -167,24 +175,6 @@ void printChar(char c, int x, int y, int size) {
   popStyle();
 }
 
-//highlights the index, and the char that appears at the index
-void displayStringHighlight(String str, int x, int y, int size, int index){
-    pushStyle();
-  
-    for (int i = 0; i < 26; i++) {
-      char sc = str.charAt(i);
-    
-      int ypos = y + size/2 + i * size;
-      int xpos = x + size/2;
-    
-      if(index == i || sc == (char)index+65){
-        printCharHighlight(sc, xpos, ypos, size);
-      } else {
-        printChar(sc, xpos, ypos, size);
-      }
-  }
-  popStyle();
-}
 
 ArrayList<Character> stringToArray(String s) {
   ArrayList<Character> output = new ArrayList<Character>();
