@@ -7,6 +7,7 @@ ArrayList<String> plugboard;
 // String firstRotor, secondRotor, thirdRotor;
 
 void setup(){
+  
   String firstRotor = "";
   while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
 	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
@@ -47,6 +48,7 @@ void setup(){
     settingTwo = 0;
     settingThree = 0;
   }
+  
 
 
   size(500,600);
@@ -149,7 +151,7 @@ void keyPressed(){
 
          fill(255);
          stroke(255);
-         rect(1, 518, 800, 27);
+         rect(1, 518, 800, 33);
          rect(1, 563, 800, 50);
 
          o_xpos = 3;
