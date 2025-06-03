@@ -104,6 +104,7 @@ void setup(){
 
   x_ref = 40;
   x_in = 450;
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_ref-18, 30, 18);
   displayString(reflectorB, x_ref, 30, 18);
   displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
 }
@@ -202,7 +203,7 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   char output = x;
   int index = charToIndex(output);
 
-
+  
   output = firstrot.status_arr.get(index);
   index = firstrot.setting_arr.indexOf(output);
   firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'r');
@@ -221,6 +222,8 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   output = reflector.charAt(index);
 
   displayStringHighlight(reflector,x_ref, 30, 18, output, 'r');
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_ref-18, 30, 18);
+  displayRefAlph(x_ref,output, 'r');
 
   output = thirdrot.setting_arr.get(index);
   index = thirdrot.status_arr.indexOf(output);
@@ -235,9 +238,14 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'l');
 
   output = indexToChar(index);
+  //input output display
+  
   displayStringHighlight("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18, output, 'l');
  // output = plugTransform(output);
-
+ 
+  //highlight input yellow
+  displayRefAlph(x_in+18,x, 'y');
+  
   return output;
 }
 
