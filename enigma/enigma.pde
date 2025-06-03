@@ -29,7 +29,8 @@ void setup(){
   plugboard.add("CG");
   plugboard.add("ZE");
 
-  r1.printChar('a', width/2, height/2, 20);
+  //r1.printChar('a', width/2, height/2, 20);
+  //r1.display(0, 0, 40, 0);
 
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -51,10 +52,9 @@ void draw(){
 }
 
 void keyPressed(){
-  //if valid
+    //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
-    //print user input(uppercase) top of screen
-    formater++;
+    
     
     //add a space every 5 chars; align; reset if not enough space
     if(formater % 5 == 0){
@@ -66,16 +66,17 @@ void keyPressed(){
        if(formater > 20){
          fill(255);     
          stroke(255);
-         rect(3, 520, 750, 27);
-         rect(3, 566, 750, 50);
+         rect(1, 520, 750, 27);
+         rect(1, 566, 750, 50);
          
-
          o_xpos = 3;
          i_xpos = 3;
          formater = 0;
          
        }
     }    
+    
+    formater++;
     char input = (char) (key-32);
     fill(0);
     text(input, i_xpos, i_ypos);
