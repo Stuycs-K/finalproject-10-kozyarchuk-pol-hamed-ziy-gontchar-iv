@@ -7,7 +7,7 @@ ArrayList<String> plugboard;
 // String firstRotor, secondRotor, thirdRotor;
 
 void setup(){
-  
+
   String firstRotor = "";
   while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
 	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
@@ -48,7 +48,7 @@ void setup(){
     settingTwo = 0;
     settingThree = 0;
   }
-  
+
 
 
   String setPlugboard = "";
@@ -92,9 +92,9 @@ void setup(){
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
 
-  plugboard.add("AB");
-  plugboard.add("CG");
-  plugboard.add("ZE");
+  // plugboard.add("AB");
+  // plugboard.add("CG");
+  // plugboard.add("ZE");
 
   //r1.printChar('a', width/2, height/2, 20);
   textSize(15);
