@@ -83,13 +83,21 @@ public class Rotor {
 
   void printChar(char c, int x, int y, int size) {
     fill(255);
-    // noStroke();
     square(x - size/2, y - size/2, size);
     fill(0);
     textSize(size);
     textAlign(CENTER, CENTER);
     text(c, x, y);
   } // Print character to screen
+
+  void printChar(char c, int x, int y, int size, color bcol, color fcol) {
+    fill(bcol);
+    square(x - size/2, y - size/2, size);
+    fill(fcol);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+  }
 
   void display(int x, int y, int size, int gap) {
     for (int i = 0; i < 26; i++) {
@@ -103,6 +111,40 @@ public class Rotor {
       printChar(ac, xpos, ypos, size);
     }
   } // Print rotor to screen
+
+  void display(int x, int y, int size, int gap, char oldChar, char newChar, color oldColor, color newColor, boolean line) {
+    // Variables to hold the positions of the old and new characters
+    int oldxpos = 0, oldypos = 0, newxpos = 0, newypos = 0;
+
+    // Highlight the old and new characters
+    for (int i = 0; i < 26; i++) {
+      char sc = this.status_arr.get(i);
+      char ac = this.setting_arr.get(i);
+
+      int ypos = y + size/2 + i * size;
+      int xpos = x + size/2;
+
+      printChar(sc, xpos + gap + size, ypos, size);
+      printChar(ac, xpos, ypos, size);
+
+      if (sc == oldChar) {
+        printChar(sc, xpos + gap + size, ypos, size, oldColor, color(255));
+        oldxpos = xpos + gap + size;
+        oldypos = ypos;
+      } 
+      // Overwrite the character with highlight
+      if (ac == newChar) {
+        printChar(ac, xpos, ypos, size, newColor, color(255));
+        newxpos = xpos;
+        newypos = ypos;
+      } // Overwrite the character with highlight
+    }
+    
+    if (line) {
+      stroke(0);
+      line(newxpos, newypos, oldxpos, oldypos); // Draw line between old and new character
+    }
+  }
 
 }
 
