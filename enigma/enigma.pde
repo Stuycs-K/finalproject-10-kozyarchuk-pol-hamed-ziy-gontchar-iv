@@ -1,4 +1,4 @@
-int i_xpos, i_ypos, o_xpos, o_ypos, x_r1, x_r2, x_r3, x_ref;
+int i_xpos, i_ypos, o_xpos, o_ypos, x_r1, x_r2, x_r3, x_ref, x_in;
 Rotor r1, r2, r3;
 String reflectorB;
 int formater;
@@ -52,9 +52,10 @@ void setup(){
   reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
   // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
   
-  x_ref = 30;
+  x_ref = 40;
+  x_in = 450;
   displayString(reflectorB, x_ref, 30, 18);
-  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 450, 30, 18);
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
 }
 
 
@@ -69,6 +70,23 @@ void draw(){
 }
 
 void keyPressed(){
+  
+  //clear arrows
+  pushStyle();
+  noStroke();
+  fill(255);
+  rect(x_ref+19, 30, 95, 470);
+  rect(x_r3+19, 30, 95, 470);
+  rect(x_r2+19, 30, 95, 470);
+  rect(x_r1+15, 30, 90, 470);
+   
+  popStyle();
+  
+  r1.display(x_r1, 30, 18, 0);
+  r2.display(x_r2, 30, 18, 0);
+  r3.display(x_r3, 30, 18, 0);  
+  displayString(reflectorB, x_ref, 30, 18);  
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
     //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
     
@@ -137,36 +155,37 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   
   output = firstrot.status_arr.get(index);
   index = firstrot.setting_arr.indexOf(output);
-  firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'l');
+  firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'r');
   
   output = secondrot.status_arr.get(index);
   index = secondrot.setting_arr.indexOf(output);
-  secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'l');
+  secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'r');
   
   output = thirdrot.status_arr.get(index);
   index = thirdrot.setting_arr.indexOf(output);
-  thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'l');
+  thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'r');
  
   output = reflector.charAt(index);
   
   index = charToIndex(output);
   output = reflector.charAt(index);
   
+  displayStringHighlight(reflector,x_ref, 30, 18, output, 'r');
 
   output = thirdrot.setting_arr.get(index);
   index = thirdrot.status_arr.indexOf(output);
-  thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'r');
+  thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'l');
   
   output = secondrot.setting_arr.get(index);
   index = secondrot.status_arr.indexOf(output);
-  secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'r');
+  secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'l');
   
   output = firstrot.setting_arr.get(index);
   index = firstrot.status_arr.indexOf(output);
-  firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'r');
+  firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'l');
   
   output = indexToChar(index);
-
+  displayStringHighlight("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18, output, 'l');
  // output = plugTransform(output);
 
   return output;

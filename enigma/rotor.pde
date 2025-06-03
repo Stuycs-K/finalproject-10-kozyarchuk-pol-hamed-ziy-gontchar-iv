@@ -110,11 +110,15 @@ public class Rotor {
       int xpos = x + size/2;
       
       if(sc == target){
-        printCharHighlight(sc, xpos+gap+size, ypos, size, dir);
-        printChar(ac, xpos, ypos, size);        
+        printCharHighlight(sc, xpos+gap+size, ypos, size,dir);
+        if(dir == 'r'){
+          line(xpos + 30, ypos, xpos+93, ypos);
+        }
       } else if (ac == target){
-        printChar(sc, xpos + gap + size, ypos, size);
         printCharHighlight(ac, xpos, ypos, size, dir);
+        if(dir == 'l'){
+          line(xpos - 7, ypos, xpos - 75, ypos);
+        }
       } 
     }
     
@@ -128,11 +132,9 @@ void printCharHighlight(char c, int x, int y, int size, char dir) {
     pushStyle();
     //if pointing left;
     if(dir == 'l'){
-      fill(255,255,0);
-      line(x - size/2 , y - size/2+10, x - size/2 +100, y-size/2+10);
-    } else if(dir == 'r'){
       fill(255,0,0);
-      line(x-size/2, y-size/2+10, x-size/2-100, y-size/2+10);
+    } else if(dir == 'r'){
+      fill(255,255,0);
     }
     // noStroke();
     square(x - size/2, y - size/2, size);
@@ -173,6 +175,31 @@ void printChar(char c, int x, int y, int size) {
     printChar(sc, xpos, ypos, size);
   }
   popStyle();
+}
+
+void displayStringHighlight(String str, int x, int y, int size, char target, char dir){
+    pushStyle();
+  
+    for (int i = 0; i < 26; i++) {
+      char sc = str.charAt(i);
+    
+      int ypos = y + size/2 + i * size;
+      int xpos = x + size/2;
+    
+      if(sc == target){
+          printCharHighlight(sc, xpos, ypos, size, 'l');
+         if(dir == 'l'){
+            line(xpos - 15, ypos, xpos-80, ypos);
+          }          
+      } else if(i == charToIndex(target)){
+          printCharHighlight(sc, xpos, ypos, size, 'r');
+          if(dir == 'r'){
+            line(xpos + 15, ypos, xpos+80, ypos);
+          }
+       }        
+      }
+      popStyle();  
+
 }
 
 
