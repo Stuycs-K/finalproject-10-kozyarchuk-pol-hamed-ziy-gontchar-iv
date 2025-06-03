@@ -7,7 +7,7 @@ ArrayList<String> plugboard;
 // String firstRotor, secondRotor, thirdRotor;
 
 void setup(){
-  
+
   String firstRotor = "";
   while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
 	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
@@ -48,7 +48,25 @@ void setup(){
     settingTwo = 0;
     settingThree = 0;
   }
-  
+
+
+
+  String setPlugboard = "";
+  while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+    setPlugboard = prompt("Do you want to set any plugboard settings? ( Y / N )");
+  }
+  plugboard = new ArrayList<String>();
+
+  while(setPlugboard.equals("Y")){
+    String initialPlug = prompt("Enter the first letter you want the plug to go to: ");
+    initialPlug += prompt("Enter the letter do you want the plug for " + initialPlug + " to go to: ");
+    setPlugboard = "";
+    while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+      setPlugboard = prompt("Do you want to set any other plugboard settings? ( Y / N )");
+    }
+    plugboard.add(initialPlug);
+  }
+
 
 
   size(500,600);
@@ -74,10 +92,9 @@ void setup(){
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
 
-  plugboard = new ArrayList<String>();
-  plugboard.add("AB");
-  plugboard.add("CG");
-  plugboard.add("ZE");
+  // plugboard.add("AB");
+  // plugboard.add("CG");
+  // plugboard.add("ZE");
 
   //r1.printChar('a', width/2, height/2, 20);
   textSize(15);
@@ -198,7 +215,7 @@ void keyPressed(){
 
 //runs x through the 3 specificed rotors, returns result
 char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String reflector){
- // x = plugTransform(x);
+ x = plugTransform(x);
 
   char output = x;
   int index = charToIndex(output);
@@ -246,6 +263,9 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   //highlight input yellow
   displayRefAlph(x_in+18,x, 'y');
   
+
+ //output = plugTransform(output);
+
   return output;
 }
 
