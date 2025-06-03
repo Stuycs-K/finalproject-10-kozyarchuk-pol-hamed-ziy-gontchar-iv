@@ -119,7 +119,7 @@ public class Rotor {
         printCharHighlight(ac, xpos, ypos, size, dir);
         if(dir == 'l'){
           line(xpos - 7, ypos, xpos - 75, ypos);
-          triangle(xpos-7, ypos, xpos-12, ypos+5, xpos-12, ypos-5);
+          triangle(xpos-9, ypos, xpos-14, ypos+5, xpos-14, ypos-5);
         }
       }
     }
