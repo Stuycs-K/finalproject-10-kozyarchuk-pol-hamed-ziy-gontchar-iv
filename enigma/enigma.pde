@@ -1,10 +1,54 @@
+import javax.swing.*;
 int i_xpos, i_ypos, o_xpos, o_ypos, x_r1, x_r2, x_r3, x_ref, x_in;
 Rotor r1, r2, r3;
 String reflectorB;
 int formater;
 ArrayList<String> plugboard;
+// String firstRotor, secondRotor, thirdRotor;
 
 void setup(){
+  String firstRotor = "";
+  while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
+	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
+     // println()
+  }
+  String secondRotor = "";
+  while(!secondRotor.equals("I") && !secondRotor.equals("II") && !secondRotor.equals("III")){
+	   secondRotor = prompt("What rotor would you like to be in the second position ( I , II, III):");
+  }
+  String thirdRotor = "";
+  while(!thirdRotor.equals("I") && !thirdRotor.equals("II") && !thirdRotor.equals("III")){
+	   thirdRotor = prompt("What rotor would you like to be in the third position ( I , II, III):");
+  }
+
+  String setRotors = "";
+  while(!setRotors.equals("Y") && !setRotors.equals("N")){
+    setRotors = prompt("Do you want to set certain starting positions for the rotors? ( Y / N )");
+  }
+
+  int settingOne = 100;
+  int settingTwo = 100;
+  int settingThree = 100;
+  if(setRotors.equals("Y")){
+    while((settingOne > 26) || (settingOne < 0)){
+      settingOne = Integer.parseInt(prompt("Please select the starting setting for the first rotor ( 0 - 26 )"));
+    }
+
+    while((settingTwo > 26) || (settingTwo < 0)){
+      settingTwo = Integer.parseInt(prompt("Please select the starting setting for the second rotor ( 0 - 26 )"));
+    }
+
+    while((settingThree > 26) || (settingThree < 0)){
+      settingThree = Integer.parseInt(prompt("Please select the starting setting for the third rotor ( 0 - 26 )"));
+    }
+  }
+  else{
+    settingOne = 0;
+    settingTwo = 0;
+    settingThree = 0;
+  }
+
+
   size(500,600);
 
   fill(255);
@@ -20,9 +64,13 @@ void setup(){
 
   formater = 0;
 
-  r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
-  r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
-  r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
+  r1 = rotorFormatter(firstRotor, settingOne);
+  r2 = rotorFormatter(secondRotor, settingTwo);
+  r3 = rotorFormatter(thirdRotor, settingThree);
+
+  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
+  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
+  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
 
   plugboard = new ArrayList<String>();
   plugboard.add("AB");
@@ -36,22 +84,22 @@ void setup(){
   text("second rotor", 215, 25);
   text("third rotor", 115, 25);
   text("reflector", 15, 25);
-  
+
   x_r1 = 345;
   x_r2 = 240;
   x_r3 = 135;
   r1.display(x_r1, 30, 18, 0);
   r2.display(x_r2, 30, 18, 0);
-  r3.display(x_r3, 30, 18, 0); 
-  
-  
+  r3.display(x_r3, 30, 18, 0);
+
+
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
   // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
 
   reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
   // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
-  
+
   x_ref = 40;
   x_in = 450;
   displayString(reflectorB, x_ref, 30, 18);
@@ -70,7 +118,7 @@ void draw(){
 }
 
 void keyPressed(){
-  
+
   //clear arrows
   pushStyle();
   noStroke();
@@ -79,45 +127,45 @@ void keyPressed(){
   rect(x_r3+19, 30, 95, 470);
   rect(x_r2+19, 30, 95, 470);
   rect(x_r1+15, 30, 90, 470);
-   
+
   popStyle();
-  
+
   r1.display(x_r1, 30, 18, 0);
   r2.display(x_r2, 30, 18, 0);
-  r3.display(x_r3, 30, 18, 0);  
-  displayString(reflectorB, x_ref, 30, 18);  
+  r3.display(x_r3, 30, 18, 0);
+  displayString(reflectorB, x_ref, 30, 18);
   displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
     //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
-    
+
     //add a space every 5 chars; align; reset if not enough space
     if(formater % 5 == 0 && formater !=0){
       o_xpos=33 *formater;
       i_xpos=33 * formater;
-       
+
        //clear chars
        if(formater > 10){
          pushStyle();
-         
-         fill(255);     
+
+         fill(255);
          stroke(255);
          rect(1, 518, 800, 27);
          rect(1, 563, 800, 50);
-         
+
          o_xpos = 3;
          i_xpos = 3;
          formater = 0;
-         
+
          popStyle();
        }
-    }    
-    
+    }
+
     formater++;
     char input = (char) (key-32);
     fill(0);
     text(input, i_xpos, i_ypos);
     i_xpos+=textWidth(input);
-   
+
 
     //input changes depending on what rotors are selected
     rotorUpdate(r1,r2,r3);
@@ -130,7 +178,7 @@ void keyPressed(){
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
 
-   
+
   }
 
   if (key == '0') {
@@ -152,38 +200,38 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   char output = x;
   int index = charToIndex(output);
 
-  
+
   output = firstrot.status_arr.get(index);
   index = firstrot.setting_arr.indexOf(output);
   firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'r');
-  
+
   output = secondrot.status_arr.get(index);
   index = secondrot.setting_arr.indexOf(output);
   secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'r');
-  
+
   output = thirdrot.status_arr.get(index);
   index = thirdrot.setting_arr.indexOf(output);
   thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'r');
- 
+
   output = reflector.charAt(index);
-  
+
   index = charToIndex(output);
   output = reflector.charAt(index);
-  
+
   displayStringHighlight(reflector,x_ref, 30, 18, output, 'r');
 
   output = thirdrot.setting_arr.get(index);
   index = thirdrot.status_arr.indexOf(output);
   thirdrot.displayHighlight(x_r3, 30, 18, 0, output, 'l');
-  
+
   output = secondrot.setting_arr.get(index);
   index = secondrot.status_arr.indexOf(output);
   secondrot.displayHighlight(x_r2, 30, 18, 0, output, 'l');
-  
+
   output = firstrot.setting_arr.get(index);
   index = firstrot.status_arr.indexOf(output);
   firstrot.displayHighlight(x_r1, 30, 18, 0, output, 'l');
-  
+
   output = indexToChar(index);
   displayStringHighlight("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18, output, 'l');
  // output = plugTransform(output);
@@ -233,4 +281,27 @@ int charToIndex(char x){
 
 char indexToChar(int x){
   return ((char) (x + 65));
+}
+
+Rotor rotorFormatter(String input, int setting){
+  if(input.equals("I")){
+    return new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", setting, 'Q');
+  }
+  else if(input.equals("II")){
+    return new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", setting, 'E');
+  }
+  else if(input.equals("III")){
+    return new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", setting, 'V');
+  }
+  return new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", setting, 'Q');
+}
+
+String prompt(String s)
+{
+   // println(s);
+   String entry = JOptionPane.showInputDialog(s);
+   // if (entry == null)
+  	// return null;
+   // println(entry);
+   return entry;
 }

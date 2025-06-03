@@ -43,3 +43,12 @@ Work for 5/30-6/1
   - Added the notches as part of the rotor class, and made it functionally working for the rotate function
   - Fixed output formatting such that every five characters is a space
   - Added the functionality of a plugboard into the main enigma file, with it's own function as well
+
+Work for 6/2
+- In class:
+  - Looked for way to allow user input via running the sketch with processing-java
+  - Scanners don't work the standard way for whatever reason
+  - Found a way around using a weird pane kinda thing
+- HW:
+  - Looked further into documentation for pane input, and mostly understand that very basic part of it
+  - Added user input for what rotor order is wanted, and what settings they want them in
