@@ -43,7 +43,7 @@ void setup(){
 void draw(){
   line(0, 500, 800, 500);
   stroke(0);
-  
+  fill(0);
   textSize(15);
   text("input: ", 3, 515);
   text("output: ", 3, 560);
@@ -55,6 +55,27 @@ void keyPressed(){
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
     //print user input(uppercase) top of screen
     formater++;
+    
+    //add a space every 5 chars; align; reset if not enough space
+    if(formater % 5 == 0){
+      println(o_xpos + " " + i_xpos);
+      o_xpos=30 *formater;
+      i_xpos=30 * formater;
+       
+       //clear chars
+       if(formater > 20){
+         fill(255);     
+         stroke(255);
+         rect(3, 520, 750, 27);
+         rect(3, 566, 750, 50);
+         
+
+         o_xpos = 3;
+         i_xpos = 3;
+         formater = 0;
+         
+       }
+    }    
     char input = (char) (key-32);
     fill(0);
     text(input, i_xpos, i_ypos);
@@ -68,24 +89,7 @@ void keyPressed(){
     text(result, o_xpos, o_ypos);
     o_xpos+=textWidth(result);
 
-    //add a space every 5 chars; align; reset if not enough space
-    if(formater % 5 == 0){
-      println(o_xpos + " " + i_xpos);
-      o_xpos=30 *formater;
-      i_xpos=30 * formater;
-       
-       //clear chars
-       if(i_xpos >=750){
-         fill(255);     
-         stroke(255);
-         rect(3, 520, 750, 27);
-         rect(3, 566, 750, 50);
-         
-         o_xpos = 3;
-         i_xpos = 3;
-         formater = 0;
-       }
-    }
+   
   }
 
   if (key == '0') {
