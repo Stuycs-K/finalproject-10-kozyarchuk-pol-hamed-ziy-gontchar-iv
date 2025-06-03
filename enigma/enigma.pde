@@ -137,29 +137,34 @@ char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String ref
   
   output = firstrot.status_arr.get(index);
   index = firstrot.setting_arr.indexOf(output);
-  firstrot.displayHighlight(x_r1,30,18,0,output);
+  firstrot.displayHighlight(x_r1, 30, 18, 0, output);
   
-   output = secondrot.status_arr.get(index);
- 
+  output = secondrot.status_arr.get(index);
   index = secondrot.setting_arr.indexOf(output);
- 
+  secondrot.displayHighlight(x_r2, 30, 18, 0, output);
+  
   output = thirdrot.status_arr.get(index);
- 
   index = thirdrot.setting_arr.indexOf(output);
+  thirdrot.displayHighlight(x_r3, 30, 18, 0, output);
  
   output = reflector.charAt(index);
+  
   index = charToIndex(output);
   output = reflector.charAt(index);
   
 
   output = thirdrot.setting_arr.get(index);
   index = thirdrot.status_arr.indexOf(output);
+  thirdrot.displayHighlight(x_r3, 30, 18, 0, output);
   
   output = secondrot.setting_arr.get(index);
- 
+  index = secondrot.status_arr.indexOf(output);
+  secondrot.displayHighlight(x_r2, 30, 18, 0, output);
+  
   output = firstrot.setting_arr.get(index);
   index = firstrot.status_arr.indexOf(output);
-
+  firstrot.displayHighlight(x_r1, 30, 18, 0, output);
+  
   output = indexToChar(index);
 
  // output = plugTransform(output);
