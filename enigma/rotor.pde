@@ -97,11 +97,78 @@ public class Rotor {
     
     popStyle();
   } // Print rotor to screen
+  
+  
+  void displayHighlight(int x, int y, int size, int gap, char target) {
+    pushStyle();
+    
+    for (int i = 0; i < 26; i++) {
+      char sc = this.status_arr.get(i);
+      char ac = this.setting_arr.get(i);
+
+      int ypos = y + size/2 + i * size;
+      int xpos = x + size/2;
+      
+      if(sc == target){
+        printCharHighlight(sc, xpos+gap+size, ypos, size);
+        printChar(ac, xpos, ypos, size);        
+      } else if (ac == target){
+        printChar(sc, xpos + gap + size, ypos, size);
+        printCharHighlight(ac, xpos, ypos, size);
+      } else {
+        printChar(sc, xpos + gap + size, ypos, size);
+        printChar(ac, xpos, ypos, size);
+      }
+    }
+    
+    popStyle();
+  } // Print rotor to screen
 
 }
 
+void printCharHighlight(char c, int x, int y, int size) {
+    //save old settings
+    pushStyle();
+    fill(255,255,0);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+    
+    //restore old 
+    popStyle();
+} 
 
-
+void printChar(char c, int x, int y, int size) {
+    //save old settings
+    pushStyle();
+    fill(255);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+    
+    //restore old 
+    popStyle();
+} // Print character to screen
+  
+ void displayString(String str, int x, int y, int size){
+    pushStyle();
+  
+    for (int i = 0; i < 26; i++) {
+    char sc = str.charAt(i);
+  
+    int ypos = y + size/2 + i * size;
+    int xpos = x + size/2;
+  
+    printChar(sc, xpos, ypos, size);
+  }
+  popStyle();
+}
 
 ArrayList<Character> stringToArray(String s) {
   ArrayList<Character> output = new ArrayList<Character>();

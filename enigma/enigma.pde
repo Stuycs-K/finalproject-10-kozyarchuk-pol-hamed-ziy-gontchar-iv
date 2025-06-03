@@ -30,18 +30,20 @@ void setup(){
   plugboard.add("ZE");
 
   //r1.printChar('a', width/2, height/2, 20);
-  textSize(20);
-  text("first rotor", 390, 25);
-  text("second rotor", 260, 25);
-  text("third rotor", 130, 25);
-  text("reflector", 20, 25);
+  textSize(15);
+  text("input/output", 415, 25);
+  text("first rotor", 330, 25);
+  text("second rotor", 215, 25);
+  text("third rotor", 115, 25);
+  text("reflector", 15, 25);
   
-  x_r1 = 412;
-  x_r2 = 293;
-  x_r3 = 160;
+  x_r1 = 345;
+  x_r2 = 240;
+  x_r3 = 135;
   r1.display(x_r1, 30, 18, 0);
   r2.display(x_r2, 30, 18, 0);
-  r3.display(x_r3, 30, 18, 0);
+  r3.display(x_r3, 30, 18, 0); 
+  
   
   // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
   // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
@@ -50,8 +52,9 @@ void setup(){
   reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
   // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
   
-  x_ref = 45;
+  x_ref = 30;
   displayString(reflectorB, x_ref, 30, 18);
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 450, 30, 18);
 }
 
 
@@ -71,7 +74,6 @@ void keyPressed(){
     
     //add a space every 5 chars; align; reset if not enough space
     if(formater % 5 == 0 && formater !=0){
-      println(o_xpos + " " + i_xpos);
       o_xpos=33 *formater;
       i_xpos=33 * formater;
        
@@ -95,16 +97,15 @@ void keyPressed(){
     formater++;
     char input = (char) (key-32);
     fill(0);
-    println(i_xpos + ", " + i_ypos);
     text(input, i_xpos, i_ypos);
     i_xpos+=textWidth(input);
    
 
     //input changes depending on what rotors are selected
     rotorUpdate(r1,r2,r3);
-    r1.display(x_r1, 30, 18, 0);
-    r2.display(x_r2, 30, 18, 0);
-    r3.display(x_r3, 30, 18, 0);
+    //r1.displayHighlight(x_r1, 30, 18, 0, input);
+    //r2.displayHighlight(x_r2, 30, 18, 0);
+    //r3.displayHighlight(x_r3, 30, 18, 0);
 
     //print result
     char result = encrypt(key, r1, r2, r3, reflectorB);
@@ -128,64 +129,66 @@ void keyPressed(){
 
 //runs x through the 3 specificed rotors, returns result
 char encrypt(char x, Rotor firstrot, Rotor secondrot, Rotor thirdrot, String reflector){
-  x = plugTransform(x);
+ // x = plugTransform(x);
 
   char output = x;
   int index = charToIndex(output);
 
-  //println("Encoding: " + x);
+  println("Encoding: " + x);
 
   output = firstrot.status_arr.get(index);
-  //println("Found this at index of first input: " + output);
+  println("Found this at index of first input: " + output);
   // index = charToIndex(output);
   // output = firstrot.setting_arr.get(index);
   index = firstrot.setting_arr.indexOf(output);
-  //println("Found this at index of first output: " + firstrot.setting_arr.get(index));
+  println("Found this at index of first output: " + firstrot.setting_arr.get(index));
+  firstrot.displayHighlight(x_r1, 30, 18, 0, output);
 
   // index = charToIndex(output);
   output = secondrot.status_arr.get(index);
-  //println("Found this at index of second input: " + output);
+  println("Found this at index of second input: " + output);
   // index = charToIndex(output);
   // output = secondrot.setting_arr.get(index);
   index = secondrot.setting_arr.indexOf(output);
-  //println("Found this at index of second output: " + secondrot.setting_arr.get(index));
-
+  println("Found this at index of second output: " + secondrot.setting_arr.get(index));
+  secondrot.displayHighlight(x_r2, 30, 18, 0, output);
+  
   // index = charToIndex(output);
   output = thirdrot.status_arr.get(index);
- // println("Found this at index of third input: " + output);
+  println("Found this at index of third input: " + output);
   // index = charToIndex(output);
   // output = thirdrot.setting_arr.get(index);
   index = thirdrot.setting_arr.indexOf(output);
-  //println("Found this at index of third output: " + thirdrot.setting_arr.get(index));
-
+  println("Found this at index of third output: " + thirdrot.setting_arr.get(index));
+  thirdrot.displayHighlight(x_r3, 30, 18, 0, output);
   // index = charToIndex(output);
- // println("Third rotor setting: " + thirdrot.setting_arr.toString());
- // println("This index: " + index);
+  println("Third rotor setting: " + thirdrot.setting_arr.toString());
+  println("This index: " + index);
   output = reflector.charAt(index);
- // println("Into reflector: " + output);
+  println("Into reflector: " + output);
   index = charToIndex(output);
   output = reflector.charAt(index);
- // println("Reflected: " + output);
+  println("Reflected: " + output);
 
   output = thirdrot.setting_arr.get(index);
-//  println("Found this at index of third setting: " + output);
+  println("Found this at index of third setting: " + output);
   index = thirdrot.status_arr.indexOf(output);
-//  println("Found this at index of third status: " + thirdrot.status_arr.get(index));
+  println("Found this at index of third status: " + thirdrot.status_arr.get(index));
 
   output = secondrot.setting_arr.get(index);
- // println("Found this at index of second setting: " + output);
+  println("Found this at index of second setting: " + output);
 //  index = secondrot.status_arr.indexOf(output);
-//  println("Found this at index of second status: " + secondrot.status_arr.get(index));
+  println("Found this at index of second status: " + secondrot.status_arr.get(index));
 
   output = firstrot.setting_arr.get(index);
- // println("Found this at index of first setting: " + output);
+  println("Found this at index of first setting: " + output);
   index = firstrot.status_arr.indexOf(output);
- // println("Found this at index of first status: " + firstrot.status_arr.get(index));
+   println("Found this at index of first status: " + firstrot.status_arr.get(index));
 
   output = indexToChar(index);
-//  println("END RESULT: " + output);
+  println("END RESULT: " + output);
 
-  output = plugTransform(output);
+ // output = plugTransform(output);
 
   return output;
 }
@@ -196,12 +199,10 @@ void rotorUpdate(Rotor rot1, Rotor rot2, Rotor rot3){
 
   //if one full rotation,
   if(shift){
-    println("SECOND ROTOR SHIFT!!");
     //turn second rotor
     shift = rot2.rotate(1, false);
 
     if(shift){
-      println("THIRD ROTOR SHIFT!!");
       shift = rot3.rotate(1, false);
     }
   }
@@ -222,34 +223,7 @@ char plugTransform(char input){
   return input;
 }
 
-void printChar(char c, int x, int y, int size) {
-    //save old settings
-    pushStyle();
-    fill(255);
-    // noStroke();
-    square(x - size/2, y - size/2, size);
-    fill(0);
-    textSize(size);
-    textAlign(CENTER, CENTER);
-    text(c, x, y);
-    
-    //restore old 
-    popStyle();
-} // Print character to screen
-  
- void displayString(String str, int x, int y, int size){
-    pushStyle();
-  
-    for (int i = 0; i < 26; i++) {
-    char sc = str.charAt(i);
-  
-    int ypos = y + size/2 + i * size;
-    int xpos = x + size/2;
-  
-    printChar(sc, xpos, ypos, size);
-  }
-  popStyle();
-}
+
 
 int charToIndex(char x){
   if((int)x >= 97){
