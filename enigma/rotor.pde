@@ -165,6 +165,21 @@ void printChar(char c, int x, int y, int size) {
     popStyle();
 } // Print character to screen
 
+void printChar(char c, int x, int y, int size, color col) {
+    //save old settings
+    pushStyle();
+    fill(col);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+
+    //restore old
+    popStyle();
+}
+
  void displayString(String str, int x, int y, int size){
     pushStyle();
 
@@ -177,6 +192,31 @@ void printChar(char c, int x, int y, int size) {
     printChar(sc, xpos, ypos, size);
   }
   popStyle();
+}
+
+void displayStringPlug(String plug, int x, int y, int size) {
+    pushStyle();
+
+    String aplpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for (int i = 1; i < plug.length(); i += 2) {
+      char pc = plug.charAt(i);
+      int ai = aplpha.indexOf(plug.charAt(i-1));
+
+      char pcr = plug.charAt(i-1);
+      int air = aplpha.indexOf(plug.charAt(i));
+
+      int ypos = y + size/2 + ai * size;
+      int xpos = x + size/2;
+
+      int yposr = y + size/2 + air * size;
+      int xposr = x + size/2;
+
+      printChar(pcr, xposr, yposr, size, color(0, 255, 255));
+      printChar(pc, xpos, ypos, size, color(0, 255, 255));
+    }
+
+    popStyle();
 }
 
 void displayStringHighlight(String str, int x, int y, int size, char target, char dir){

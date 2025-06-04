@@ -4,6 +4,8 @@ Rotor r1, r2, r3;
 String reflectorB;
 int formater;
 ArrayList<String> plugboard;
+boolean plugboardb = false;
+String sPlug = "";
 // String firstRotor, secondRotor, thirdRotor;
 
 void setup(){
@@ -65,6 +67,9 @@ void setup(){
       setPlugboard = prompt("Do you want to set any other plugboard settings? ( Y / N )");
     }
     plugboard.add(initialPlug);
+    sPlug += initialPlug;
+    println("Plugboard: " + sPlug);
+    plugboardb = true;
   }
 
 
@@ -98,7 +103,8 @@ void setup(){
 
   //r1.printChar('a', width/2, height/2, 20);
   textSize(15);
-  text("input/output", 415, 25);
+  text("i/o", 450, 25);
+  text("p", 473, 25);
   text("first rotor", 330, 25);
   text("second rotor", 215, 25);
   text("third rotor", 115, 25);
@@ -124,6 +130,10 @@ void setup(){
   displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_ref-18, 30, 18);
   displayString(reflectorB, x_ref, 30, 18);
   displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
+
+  if (plugboardb) {
+    displayStringPlug(sPlug, x_in + 18, 30, 18);
+  }
 }
 
 
@@ -155,6 +165,10 @@ void keyPressed(){
   r3.display(x_r3, 30, 18, 0);
   displayString(reflectorB, x_ref, 30, 18);
   displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
+  if (plugboardb) {
+    displayStringPlug(sPlug, x_in + 18, 30, 18);
+  }
+  // Plugboard Display
     //if valid
   if ( (key>=65 && key<= 90) || (key>=97 && key<=122) ){
 
