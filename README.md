@@ -25,7 +25,7 @@ In some instances, simply using the relative path of the sketch, in this case, *
 
 #### Use
 
-To use the visulaizer, you'll first have to supply some arguments upon running the program, these arguments will setup the enigma machine. Follow the dialogue prompts to set the enigma rotors in order of preference, and if desired, you may set plugboard routes and configure rotor rotations. 
+To use the visualizer, you'll first have to supply some arguments upon running the program, these arguments will setup the enigma machine. Follow the dialogue prompts to set the enigma rotors in order of preference, and if desired, you may set plugboard routes and configure rotor rotations. 
 
 After setting up the machine, using it is really easy! Just press a letter to input and watch as machine maps out its trajectory as it passes through the machine. A yellow color indicates an input, a red color, an output, and a cyan color, denotes plugboard settings.
 
