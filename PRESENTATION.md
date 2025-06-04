@@ -16,7 +16,7 @@
 - You can choose any one of the three rotors we support, and in any order. Trying to type invalid input will not work.
 - Next you will be able to configure your rotor settings, though you can choose not to which would result in the default positions for all of them. Trying to enter something besides Y or N will not work. For the settings numbers, attempts that are too high will not work either.
 - Then, you will have the option to configure the plugboard. You can input the first letter of the connection, and then you will be prompted for the other letter you would want it to connect to. You will have another yes or no prompt at the end of every addition to the plugboard, to choose when to stop.
-- Finally you will have reached our program. You can start typing on yout keyboard, which will trigger the visualization and show the input/output at the bottom.
+- Finally you will have reached our program. You can start typing on your keyboard, which will trigger the visualization and show the input/output at the bottom.
 - If you want to reset, you don't have to redo the whole commandline running, just press 0 on the keyboard and you will be reprompted for settings.
 
 ## The Visualization
