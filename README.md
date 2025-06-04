@@ -23,6 +23,14 @@ To run the application simply use the command `processing-java --sketch=enigma -
 
 In some instances, simply using the relative path of the sketch, in this case, *enigma* may not properly pick up the fodler, if that's the case use the full path from the drive as the argument for sketch. (This was the case on some of our windows machines)
 
+#### Use
+
+To use the visulaizer, you'll first have to supply some arguments upon running the program, these arguments will setup the enigma machine. Follow the dialogue prompts to set the enigma rotors in order of preference, and if desired, you may set plugboard routes and configure rotor rotations. 
+
+After setting up the machine, using it is really easy! Just press a letter to input and watch as machine maps out its trajectory as it passes through the machine. A yellow color indicates an input, a red color, an output, and a cyan color, denotes plugboard settings.
+
+Look at the bottom of the screen to see your inputted text and the output.
+
 ### Resources/ References:
 
 Working Visualizers:
