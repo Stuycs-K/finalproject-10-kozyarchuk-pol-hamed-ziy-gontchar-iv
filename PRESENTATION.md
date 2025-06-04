@@ -1,9 +1,6 @@
 ### Enigma Machine Emulator
 
 ## Intro:
-Hello we are The Paper Enigmatics & then per person
-Our project is the enigma machine
-About the Enigma machine (polina)
 
 ## What it was - some history (Polina):
 ![enigma machine image](https://github.com/Stuycs-K/finalproject-10-kozyarchuk-pol-hamed-ziy-gontchar-iv/blob/main/enigma/image_2025-06-04_073958274.png)
@@ -21,4 +18,3 @@ About the Enigma machine (polina)
 ## The Visualization (Ziyad)
 Visualization:
 - To follow the visualization, user the arrows, but also we can see that yellow is for the first round of the process, and red is when it goes back around.
---------------------
