@@ -17,4 +17,9 @@
 
 ## The Visualization (Ziyad)
 Visualization:
-- To follow the visualization, user the arrows, but also we can see that yellow is for the first round of the process, and red is when it goes back around.
+- To follow the visualization, you can use the arrows, but also we can see that yellow is for the first round of the process, and red is when it goes back around.
+- It starts with the i/o (input / output), if any plugboard settings it will start at the corresponding letter it connects to.
+- It goes straight across from the i/o to the first rotor, and then whatever letter you land on, you find in the next column in that same rotor. Then you go straight across to the second rotor.
+- Follow this to the reflector, where whatever letter you land on in the right column, the letter to the left is what you reflect to. So find that letter in the right column.
+- Finally go across, and this time whatever you land on in the left column, find that letter in the right column, and repeat that process for the other rotors, basically the first step but in reverse. Follow the arrows.
+- Finally it'll go back to the i/o and you will get your result. If there is a plugboard setting for that, the output will correspond with the plugboard.
