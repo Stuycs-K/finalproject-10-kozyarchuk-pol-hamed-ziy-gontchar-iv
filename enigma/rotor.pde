@@ -83,7 +83,7 @@ public class Rotor {
 
   void display(int x, int y, int size, int gap) {
     pushStyle();
-    
+
     for (int i = 0; i < 26; i++) {
       char sc = this.status_arr.get(i);
       char ac = this.setting_arr.get(i);
@@ -94,35 +94,36 @@ public class Rotor {
       printChar(sc, xpos + gap + size, ypos, size);
       printChar(ac, xpos, ypos, size);
     }
-    
+
     popStyle();
   } // Print rotor to screen
-  
-  
-  
+
+
   void displayHighlight(int x, int y, int size, int gap, char target, char dir) {
     pushStyle();
-    
+
     for (int i = 0; i < 26; i++) {
       char sc = this.status_arr.get(i);
       char ac = this.setting_arr.get(i);
 
       int ypos = y + size/2 + i * size;
       int xpos = x + size/2;
-      
+
       if(sc == target){
         printCharHighlight(sc, xpos+gap+size, ypos, size,dir);
         if(dir == 'r'){
           line(xpos + 30, ypos, xpos+93, ypos);
+          triangle(xpos+30, ypos, xpos+35, ypos+5, xpos+35, ypos-5);
         }
       } else if (ac == target){
         printCharHighlight(ac, xpos, ypos, size, dir);
         if(dir == 'l'){
           line(xpos - 7, ypos, xpos - 75, ypos);
+          triangle(xpos-9, ypos, xpos-14, ypos+5, xpos-14, ypos-5);
         }
-      } 
+      }
     }
-    
+
     popStyle();
   } // Print rotor to screen
 
@@ -139,15 +140,15 @@ void printCharHighlight(char c, int x, int y, int size, char dir) {
     }
     // noStroke();
     square(x - size/2, y - size/2, size);
-    
+
     fill(0);
     textSize(size);
     textAlign(CENTER, CENTER);
     text(c, x, y);
-    
-    //restore old 
+
+    //restore old
     popStyle();
-} 
+}
 
 void printChar(char c, int x, int y, int size) {
     //save old settings
@@ -159,70 +160,112 @@ void printChar(char c, int x, int y, int size) {
     textSize(size);
     textAlign(CENTER, CENTER);
     text(c, x, y);
-    
-    //restore old 
+
+    //restore old
     popStyle();
 } // Print character to screen
-  
+
+void printChar(char c, int x, int y, int size, color col) {
+    //save old settings
+    pushStyle();
+    fill(col);
+    // noStroke();
+    square(x - size/2, y - size/2, size);
+    fill(0);
+    textSize(size);
+    textAlign(CENTER, CENTER);
+    text(c, x, y);
+
+    //restore old
+    popStyle();
+}
+
  void displayString(String str, int x, int y, int size){
     pushStyle();
-  
+
     for (int i = 0; i < 26; i++) {
     char sc = str.charAt(i);
-  
+
     int ypos = y + size/2 + i * size;
     int xpos = x + size/2;
-  
+
     printChar(sc, xpos, ypos, size);
   }
   popStyle();
 }
 
+void displayStringPlug(String plug, int x, int y, int size) {
+    pushStyle();
+
+    String aplpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for (int i = 1; i < plug.length(); i += 2) {
+      char pc = plug.charAt(i);
+      int ai = aplpha.indexOf(plug.charAt(i-1));
+
+      char pcr = plug.charAt(i-1);
+      int air = aplpha.indexOf(plug.charAt(i));
+
+      int ypos = y + size/2 + ai * size;
+      int xpos = x + size/2;
+
+      int yposr = y + size/2 + air * size;
+      int xposr = x + size/2;
+
+      printChar(pcr, xposr, yposr, size, color(0, 255, 255));
+      printChar(pc, xpos, ypos, size, color(0, 255, 255));
+    }
+
+    popStyle();
+}
+
 void displayStringHighlight(String str, int x, int y, int size, char target, char dir){
     pushStyle();
-  
+
     for (int i = 0; i < 26; i++) {
       char sc = str.charAt(i);
-    
+
       int ypos = y + size/2 + i * size;
       int xpos = x + size/2;
-    
+
       if(sc == target){
           printCharHighlight(sc, xpos, ypos, size, 'l');
          if(dir == 'l'){
             line(xpos - 15, ypos, xpos-80, ypos);
-          }          
+            triangle(xpos-15, ypos, xpos-20, ypos+5, xpos-20, ypos-5);
+          }
       } else if(i == charToIndex(target)){
           printCharHighlight(sc, xpos, ypos, size, 'r');
           if(dir == 'r'){
             line(xpos + 15, ypos, xpos+80, ypos);
+            triangle(xpos+15, ypos, xpos+20, ypos+5, xpos+20, ypos-5);
           }
-       }        
+       }
       }
-      popStyle();  
+      popStyle();
 
 }
 
 void displayRefAlph(int x, char target, char c) {
     pushStyle();
-    
+
     target = Character.toUpperCase(target);
     String alph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    
+
     println("target: " + target);
     for(int i = 0; i < 26; i++){
       char cur = alph.charAt(i);
       println("cur: " + cur);
       int ypos = 30 + 18/2 + i*18;
       int xpos = x-18 - 18/2;
-      
+
       if(cur == target){
         if(c == 'r'){
           printCharHighlight(cur, xpos+18, ypos, 18, 'l');
         } else if(c == 'y'){
           printCharHighlight(cur, xpos+18, ypos, 18, 'r');
         }
-      } 
+      }
     }
     popStyle();
   }

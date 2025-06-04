@@ -52,3 +52,11 @@ Work for 6/2
 - HW:
   - Looked further into documentation for pane input, and mostly understand that very basic part of it
   - Added user input for what rotor order is wanted, and what settings they want them in
+ 
+Work for 6/3
+- In class:
+  - Added user input prompts for the plugboard and store it to plugboard arraylist
+  - Cleaned up the code overall for the plugboard in main enigma file
+- HW:
+  - Added arrow points to encryption and decryption lines, for clarity
+  - Had some difficulty with their XY positionings so it took a bit, but it works

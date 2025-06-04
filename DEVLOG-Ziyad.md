@@ -15,3 +15,13 @@ Setup initial processing file and layout, and created initial rotor functionalit
 Further research and added reset option
 
 ### 2025-06-02
+About an hour.
+Created display features, multiple methods and options to display rotors (line, highlights, auto, spacing)
+
+### 2025-06-03
+About an hour and a half
+Created and implemented plugboard features as well as reinstated some unpulled method overloads
+
+### 2025-06-03
+About 10 minutes
+Fixed reset
