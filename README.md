@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/am3xLbu5)
 # Enigma Machine Visualization
 
-### GROUP NAME HERE (CHANGE THIS!!!!!)
+### The Paper Enigmatics
 
 Ivan Gontchar, Ziyad Hamed, Polina Kozyarchuk
 
@@ -13,8 +13,23 @@ Our project will feature a functioning encoding and decoding mechanism for the (
 
 ### Instructions:
 
-How does the user install/compile/run the program. (CHANGE THIS!!!!!)
-How does the user interact with this program? (CHANGE THIS!!!!!)
+#### Install
+To install the program all you need to do is clone the repo and its processing files.
+
+#### Run
+To run the application simply use the command `processing-java --sketch=enigma --run` in the folder containing the processing sketch. If the repo was cloned, then the folder would be the repo folder.
+
+**Note**
+
+In some instances, simply using the relative path of the sketch, in this case, *enigma* may not properly pick up the fodler, if that's the case use the full path from the drive as the argument for sketch. (This was the case on some of our windows machines)
+
+#### Use
+
+To use the visualizer, you'll first have to supply some arguments upon running the program, these arguments will setup the enigma machine. Follow the dialogue prompts to set the enigma rotors in order of preference, and if desired, you may set plugboard routes and configure rotor rotations. 
+
+After setting up the machine, using it is really easy! Just press a letter to input and watch as machine maps out its trajectory as it passes through the machine. A yellow color indicates an input, a red color, an output, and a cyan color, denotes plugboard settings.
+
+Look at the bottom of the screen to see your inputted text and the output.
 
 ### Resources/ References:
 
