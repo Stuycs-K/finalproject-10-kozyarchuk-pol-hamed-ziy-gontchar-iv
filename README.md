@@ -13,9 +13,13 @@ Our project will feature a functioning encoding and decoding mechanism for the (
 
 ### Instructions:
 
-How does the user install/compile/run the program. (CHANGE THIS!!!!!)
-How does the user interact with this program? (CHANGE THIS!!!!!)
+To run the program, start with copying the repo and running the sketch. You will be prompted for user input. Type in the requested information. 
+After the program starts, type in input characters. The program will show you the process of how the input goes through the rotors and plugboard, and what the final output is.
 
+### Presentation:
+
+[drive link](https://drive.google.com/file/d/1Q0ZnoEVbO6cV9D4_DZkh_6jp_9xZPFP9/view?usp=drive_link)
+ 
 ### Resources/ References:
 
 Working Visualizers:

@@ -31,3 +31,8 @@ dealing with making next disappear properly (30 min)
 struggling to merge with ziyad's code until i found push and popStyle (30 min)
 setting up path highlighting (40 min)
 arrows..? (40 min)
+
+### 2025-06-03
+touchups on arrows (30 min)
+work on presentation (60 min)
+
