@@ -13,8 +13,13 @@ Our project will feature a functioning encoding and decoding mechanism for the (
 
 ### Instructions:
 
-How does the user install/compile/run the program. (CHANGE THIS!!!!!)
-How does the user interact with this program? (CHANGE THIS!!!!!)
+#### Install
+To install the program all you need to do is clone the repo and its processing files.
+
+#### Run
+To run the application simply use the command `processing-java --sketch=enigma --run` in the folder containing the processing sketch. If the repo was cloned, then the folder would be the repo folder.
+**Note**
+In some instances, simply using the relative path of the sketch, in this case, *enigma* may not properly pick up the fodler, if that's the case use the full path from the drive as the argument for sketch. (This was the case on some of our windows machines)
 
 ### Resources/ References:
 
