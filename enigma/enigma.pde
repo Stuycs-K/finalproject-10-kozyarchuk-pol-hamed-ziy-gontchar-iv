@@ -4,136 +4,13 @@ Rotor r1, r2, r3;
 String reflectorB;
 int formater;
 ArrayList<String> plugboard;
-boolean plugboardb = false;
-String sPlug = "";
+boolean plugboardb;
+String sPlug;
 // String firstRotor, secondRotor, thirdRotor;
 
-void setup(){
-
-  String firstRotor = "";
-  while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
-	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
-     // println()
-  }
-  String secondRotor = "";
-  while(!secondRotor.equals("I") && !secondRotor.equals("II") && !secondRotor.equals("III")){
-	   secondRotor = prompt("What rotor would you like to be in the second position ( I , II, III):");
-  }
-  String thirdRotor = "";
-  while(!thirdRotor.equals("I") && !thirdRotor.equals("II") && !thirdRotor.equals("III")){
-	   thirdRotor = prompt("What rotor would you like to be in the third position ( I , II, III):");
-  }
-
-  String setRotors = "";
-  while(!setRotors.equals("Y") && !setRotors.equals("N")){
-    setRotors = prompt("Do you want to set certain starting positions for the rotors? ( Y / N )");
-  }
-
-  int settingOne = 100;
-  int settingTwo = 100;
-  int settingThree = 100;
-  if(setRotors.equals("Y")){
-    while((settingOne > 26) || (settingOne < 0)){
-      settingOne = Integer.parseInt(prompt("Please select the starting setting for the first rotor ( 0 - 26 )"));
-    }
-
-    while((settingTwo > 26) || (settingTwo < 0)){
-      settingTwo = Integer.parseInt(prompt("Please select the starting setting for the second rotor ( 0 - 26 )"));
-    }
-
-    while((settingThree > 26) || (settingThree < 0)){
-      settingThree = Integer.parseInt(prompt("Please select the starting setting for the third rotor ( 0 - 26 )"));
-    }
-  }
-  else{
-    settingOne = 0;
-    settingTwo = 0;
-    settingThree = 0;
-  }
-
-
-
-  String setPlugboard = "";
-  while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
-    setPlugboard = prompt("Do you want to set any plugboard settings? ( Y / N )");
-  }
-  plugboard = new ArrayList<String>();
-
-  while(setPlugboard.equals("Y")){
-    String initialPlug = prompt("Enter the first letter you want the plug to go to: ");
-    initialPlug += prompt("Enter the letter do you want the plug for " + initialPlug + " to go to: ");
-    setPlugboard = "";
-    while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
-      setPlugboard = prompt("Do you want to set any other plugboard settings? ( Y / N )");
-    }
-    plugboard.add(initialPlug);
-    sPlug += initialPlug;
-    println("Plugboard: " + sPlug);
-    plugboardb = true;
-  }
-
-
-
+void setup() {
   size(500,600);
-
-  fill(255);
-  rect(0, 0, width, height);
-
-  textSize(40);
-  fill(0);
-
-  i_xpos = 5;
-  i_ypos = 545;
-  o_xpos = 5;
-  o_ypos = 590;
-
-  formater = 0;
-
-  r1 = rotorFormatter(firstRotor, settingOne);
-  r2 = rotorFormatter(secondRotor, settingTwo);
-  r3 = rotorFormatter(thirdRotor, settingThree);
-
-  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
-  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
-  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
-
-  // plugboard.add("AB");
-  // plugboard.add("CG");
-  // plugboard.add("ZE");
-
-  //r1.printChar('a', width/2, height/2, 20);
-  textSize(15);
-  text("i/o", 450, 25);
-  text("p", 473, 25);
-  text("first rotor", 330, 25);
-  text("second rotor", 215, 25);
-  text("third rotor", 115, 25);
-  text("reflector", 15, 25);
-
-  x_r1 = 345;
-  x_r2 = 240;
-  x_r3 = 135;
-  r1.display(x_r1, 30, 18, 0);
-  r2.display(x_r2, 30, 18, 0);
-  r3.display(x_r3, 30, 18, 0);
-
-
-  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
-  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
-  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
-
-  reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
-  // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
-
-  x_ref = 40;
-  x_in = 450;
-  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_ref-18, 30, 18);
-  displayString(reflectorB, x_ref, 30, 18);
-  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
-
-  if (plugboardb) {
-    displayStringPlug(sPlug, x_in + 18, 30, 18);
-  }
+  upset();
 }
 
 
@@ -216,13 +93,7 @@ void keyPressed(){
   }
 
   if (key == '0') {
-    r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
-    r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
-    r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
-    i_xpos = 0;
-    o_xpos = 0;
-    fill(255);
-    rect(0, 0, width, height);
+    upset();
   }
 
 }
@@ -348,4 +219,134 @@ String prompt(String s)
   	// return null;
    // println(entry);
    return entry;
+}
+
+void upset() {
+  plugboardb = false;
+  sPlug = "";
+
+  String firstRotor = "";
+  while(!firstRotor.equals("I") && !firstRotor.equals("II") && !firstRotor.equals("III")){
+	   firstRotor = prompt("What rotor would you like to be in the first position ( I , II, III):");
+     // println()
+  }
+  String secondRotor = "";
+  while(!secondRotor.equals("I") && !secondRotor.equals("II") && !secondRotor.equals("III")){
+	   secondRotor = prompt("What rotor would you like to be in the second position ( I , II, III):");
+  }
+  String thirdRotor = "";
+  while(!thirdRotor.equals("I") && !thirdRotor.equals("II") && !thirdRotor.equals("III")){
+	   thirdRotor = prompt("What rotor would you like to be in the third position ( I , II, III):");
+  }
+
+  String setRotors = "";
+  while(!setRotors.equals("Y") && !setRotors.equals("N")){
+    setRotors = prompt("Do you want to set certain starting positions for the rotors? ( Y / N )");
+  }
+
+  int settingOne = 100;
+  int settingTwo = 100;
+  int settingThree = 100;
+  if(setRotors.equals("Y")){
+    while((settingOne > 26) || (settingOne < 0)){
+      settingOne = Integer.parseInt(prompt("Please select the starting setting for the first rotor ( 0 - 26 )"));
+    }
+
+    while((settingTwo > 26) || (settingTwo < 0)){
+      settingTwo = Integer.parseInt(prompt("Please select the starting setting for the second rotor ( 0 - 26 )"));
+    }
+
+    while((settingThree > 26) || (settingThree < 0)){
+      settingThree = Integer.parseInt(prompt("Please select the starting setting for the third rotor ( 0 - 26 )"));
+    }
+  }
+  else{
+    settingOne = 0;
+    settingTwo = 0;
+    settingThree = 0;
+  }
+
+
+
+  String setPlugboard = "";
+  while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+    setPlugboard = prompt("Do you want to set any plugboard settings? ( Y / N )");
+  }
+  plugboard = new ArrayList<String>();
+
+  while(setPlugboard.equals("Y")){
+    String initialPlug = prompt("Enter the first letter you want the plug to go to: ");
+    initialPlug += prompt("Enter the letter do you want the plug for " + initialPlug + " to go to: ");
+    setPlugboard = "";
+    while(!setPlugboard.equals("Y") && !setPlugboard.equals("N")){
+      setPlugboard = prompt("Do you want to set any other plugboard settings? ( Y / N )");
+    }
+    plugboard.add(initialPlug);
+    sPlug += initialPlug;
+    println("Plugboard: " + sPlug);
+    plugboardb = true;
+  }
+
+
+
+  size(500,600);
+
+  fill(255);
+  rect(0, 0, width, height);
+
+  textSize(40);
+  fill(0);
+
+  i_xpos = 5;
+  i_ypos = 545;
+  o_xpos = 5;
+  o_ypos = 590;
+
+  formater = 0;
+
+  r1 = rotorFormatter(firstRotor, settingOne);
+  r2 = rotorFormatter(secondRotor, settingTwo);
+  r3 = rotorFormatter(thirdRotor, settingThree);
+
+  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", 'Q');
+  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", 'E');
+  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", 'V');
+
+  // plugboard.add("AB");
+  // plugboard.add("CG");
+  // plugboard.add("ZE");
+
+  //r1.printChar('a', width/2, height/2, 20);
+  textSize(15);
+  text("i/o", 450, 25);
+  text("p", 473, 25);
+  text("first rotor", 330, 25);
+  text("second rotor", 215, 25);
+  text("third rotor", 115, 25);
+  text("reflector", 15, 25);
+
+  x_r1 = 345;
+  x_r2 = 240;
+  x_r3 = 135;
+  r1.display(x_r1, 30, 18, 0);
+  r2.display(x_r2, 30, 18, 0);
+  r3.display(x_r3, 30, 18, 0);
+
+
+  // r1 = new Rotor("EKMFLGDQVZNTOWYHXUSPAIBRCJ", charToIndex('D'));
+  // r2 = new Rotor("AJDKSIRUXBLHWTMCQGZNPYFVOE", charToIndex('O'));
+  // r3 = new Rotor("BDFHJLCPRTXVZNYEIWGAKMUSQO", charToIndex('G'));
+
+  reflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
+  // reflectorB = "ABCDEFGDIJKGMKMIEBFTCVVJAT";
+
+  x_ref = 40;
+  x_in = 450;
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_ref-18, 30, 18);
+  displayString(reflectorB, x_ref, 30, 18);
+  displayString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", x_in, 30, 18);
+
+  if (plugboardb) {
+    displayStringPlug(sPlug, x_in + 18, 30, 18);
+  }
 }
